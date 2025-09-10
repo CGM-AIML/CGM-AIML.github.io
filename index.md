@@ -25,7 +25,7 @@ Industrial systems leader transitioning into AI/ML engineering. Proven track rec
 - [Cisco Networking Basics (2025)](/assets/docs/Basics_of_Cisco_Networking_Christopher_Gonzalez-Mejias_2025.pdf)  
 - [Better Processing School – Food Safety (2023)](/assets/docs/Better_Processing_School_Christopher_Gonzalez-Mejias_2023.pdf)  
 - [Troubleshooting Electrical Circuits (2022)](/assets/docs/SimuTech_Troubleshooting_Electrical_Circuits_2022_CGM.pdf)  
-- [R-410A Safe Handling (2019)](/assets/docs/ACR_Safety_Coalition_R-410A_CGM_2019.pdf)  
+- [R-410A Safe Handling (2019)](/assets/docs/AC&R Safety Coalition R-410A Chris Gonzalez-Mejias 2019.pdf)  
 - [Front Line Leadership (2025)](/assets/docs/FLL_Certificate_of_Achievement_CGM_2025.pdf)  
 - [Stop the Bleed (2025)](/assets/docs/Stop_The_Bleed_C_Gonzalez-Mejias.pdf)  
 
