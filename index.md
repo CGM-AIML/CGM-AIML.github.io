@@ -23,11 +23,14 @@ Industrial systems leader transitioning into AI/ML engineering. Proven track rec
 - [PLC Ladder Logic (2023)](/assets/docs/Learning_PLC_Ladder_Logic_2023_CGM.pdf)  
 - [SQL Programming (2023)](/assets/docs/CertificateOfCompletion_Learning_SQL_Programming_CGM_2023.pdf)  
 - [Cisco Networking Basics (2025)](/assets/docs/Basics_of_Cisco_Networking_Christopher_Gonzalez-Mejias_2025.pdf)  
-- [Better Processing School – Food Safety (2023)](/assets/docs/Better_Processing_School_Christopher_Gonzalez-Mejias_2023.pdf)  
+- [Better Processing School – Food Safety (2023)](/assets/docs/Better_Processing_School_Christopher_Gonzalez-Mejias_Cert-Signed_2023.pdf)  
 - [Troubleshooting Electrical Circuits (2022)](/assets/docs/SimuTech_Troubleshooting_Electrical_Circuits_2022_CGM.pdf)  
-- [R-410A Safe Handling (2019)](/assets/docs/AC&R Safety Coalition R-410A Chris Gonzalez-Mejias 2019.pdf)  
+- [R-410A Safe Handling (2019)](/assets/docs/ACR_Safety_R410A_Chris_Gonzalez-Mejias_2019.pdf)  
 - [Front Line Leadership (2025)](/assets/docs/FLL_Certificate_of_Achievement_CGM_2025.pdf)  
 - [Stop the Bleed (2025)](/assets/docs/Stop_The_Bleed_C_Gonzalez-Mejias.pdf)  
+- [Dean’s Honor Roll (2023–2024)](/assets/docs/Gonzalez-Mejias_Christopher_Deans_Honor_Roll_2023-2024.pdf)  
+- [Python Foundations (2025, UT Austin/Great Learning)](/assets/docs/Python_Foundations_Christopher_Gonzalez-Mejias.pdf)  
+
 
 ---
 
@@ -45,7 +48,6 @@ Industrial systems leader transitioning into AI/ML engineering. Proven track rec
 - Startup team member for Hill’s first **digital-first S.M.A.R.T. Factory**.  
 - FAT/sFAT, I/O checks, PLC/HMI commissioning, AGVs, AMRs, vision systems.  
 - Featured by Gray Solutions: [Case Study](https://www.gray.com/projects/hills-pet-nutrition/)  
-- 
 
 ### Mauser Packaging – $11M Revitalization (2024–Present)
 - Leading turnaround initiatives and predictive maintenance programs.  
