@@ -133,9 +133,28 @@ strong{ color: var(--text); }
 }
 .badge:hover{ border-color: var(--accent); color: var(--accent-2); }
 
-/* Certificate list tighter + subtle bullets */
-.certs ul{ margin-left: 0; padding: 0; }
-.certs li::marker{ color: var(--accent); }
+/* Certificate list styling */
+.certs-list {
+  list-style: none;          /* removes default bullets */
+  padding: 0;                /* removes left padding */
+  margin: 0;                 /* resets margin */
+  text-align: left;          /* or center, depending on your design */
+}
+
+.certs-list li {
+  margin: 6px 0;             /* space between each certificate */
+}
+
+.certs-list li a {
+  color: var(--accent);       /* gold text from your palette */
+  text-decoration: none;      /* removes underline */
+  transition: color 0.2s ease;
+}
+
+.certs-list li a:hover {
+  color: var(--accent-2);     /* lighter gold when hovered */
+}
+
 
 /* “Projects” bullets with subtle description */
 .project-title{ font-weight: 700; }
