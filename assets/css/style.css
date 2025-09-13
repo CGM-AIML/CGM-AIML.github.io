@@ -88,20 +88,16 @@ h2{
   margin: 32px 0 14px;
   position: relative;
   color: var(--text);
-  text-align: center;
+  text-align: left;
 }
 
 h2::after {
-  content:"";
-  display:block;
+  content: "";
+  display: block;
   height: 2px;
-  width: 45%;                  /* controls the length */
-  margin: 12px auto 0;          /* keeps it centered */
-  background: linear-gradient(
-    90deg,                      /* left → right */
-    var(--accent),              /* start with gold */
-    transparent 85%             /* fade out by 70% of the width */
-  );
+  width: 60%;  /* controls length of the gold line */
+  margin: 12px 0 0;  /* no auto → aligns to left */
+  background: linear-gradient(90deg, var(--accent), transparent 70%);
   opacity: .7;
 }
 
