@@ -99,7 +99,7 @@ h2{
   margin: 12px auto 0;
   background: var(--accent);
   opacity: .7;
-  transform: translateX(15px); /* tiny nudge left */
+  transform: translateX(-5px); /* tiny nudge left */
 }
 
 /* Body text + lists */
