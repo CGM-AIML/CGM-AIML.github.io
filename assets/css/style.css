@@ -138,7 +138,7 @@ strong{ color: var(--text); }
   list-style: none;          /* removes default bullets */
   padding: 0;                /* removes left padding */
   margin: 0;                 /* resets margin */
-  text-align: left;          /* or center, depending on your design */
+  text-align: center;          /* or center, depending on your design */
 }
 
 .certs-list li {
