@@ -78,8 +78,7 @@ Industrial systems leader transitioning into AI/ML engineering. Proven track rec
 
 ---
 
-## Contact
-**Email:** automationspecialist72@yahoo.com  
+## Resume
 **Download Resume (PDF):** [Christopher_Gonzalez-Mejias_Resume.pdf](/assets/docs/Christopher_Gonzalez-Mejias_Resume.pdf)
 
 </div> <!-- end .main-content -->
