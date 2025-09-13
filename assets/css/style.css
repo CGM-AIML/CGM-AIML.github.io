@@ -1,14 +1,134 @@
-/* Hide the theme’s auto header and footer */
-.page-header { display: none; }
-.site-footer { display: none; }
+/* Hide theme header/footer (keep only our custom layout) */
+.page-header { display: none !important; }
+.site-footer { display: none !important; }
 
-/* Dark background + light text */
-html, body {
-  background-color: #0e1117;
-  color: #e6edf3;
-  font-family: Arial, Helvetica, sans-serif;
+/* ---------- Design tokens ---------- */
+:root{
+  --bg:        #0b0f14;
+  --panel:     #11161d;
+  --panel-2:   #0f141a;
+  --text:      #e6edf3;
+  --muted:     #9da7b3;
+  --accent:    #4f9cff;  /* primary blue */
+  --accent-2:  #6ee7ff;  /* electric cyan */
+  --border:    #1e2630;
+  --shadow:    0 10px 20px rgba(0,0,0,.35);
 }
 
-/* Links styling */
-a { color: #4fc3f7; }
-a:hover { color: #80e1ff; }
+/* ---------- Global ---------- */
+html, body{
+  background: var(--bg);
+  color: var(--text);
+  font-family: "Inter", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* Centered, card-like main content */
+.main-content{
+  max-width: 980px;
+  margin: 48px auto 80px;
+  background: linear-gradient(180deg, var(--panel), var(--panel-2));
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow);
+  border-radius: 16px;
+  padding: 40px 48px;
+}
+
+/* Links */
+a{
+  color: var(--accent);
+  text-decoration: none;
+  transition: color .18s ease, opacity .18s ease;
+}
+a:hover{ color: var(--accent-2); }
+
+/* Top title (your H1) */
+.main-content h1:first-of-type{
+  text-align: center;
+  font-weight: 800;
+  font-size: clamp(32px, 4vw, 44px);
+  letter-spacing: 0.2px;
+  margin: 0 0 8px;
+}
+
+/* Subtitle (your first paragraph or bold line under H1) */
+.hero-sub{
+  text-align: center;
+  color: var(--muted);
+  margin: 6px 0 28px;
+  font-size: 15.5px;
+}
+
+/* Section headings */
+h2{
+  font-weight: 700;
+  font-size: clamp(20px, 2.6vw, 24px);
+  margin: 28px 0 14px;
+  position: relative;
+  color: var(--text);
+}
+h2::after{
+  content:"";
+  display:block;
+  height: 2px;
+  width: 100%;
+  margin-top: 10px;
+  background: linear-gradient(90deg, var(--accent), transparent 60%);
+  opacity: .6;
+}
+
+/* Body text + lists */
+p{ margin: 8px 0 14px; color: var(--text); }
+ul{ margin: 8px 0 16px 22px; }
+li{ margin: 6px 0; }
+strong{ color: var(--text); }
+
+/* Key/Value rows (Email, GitHub, ORCID) */
+.kv{
+  display: grid;
+  grid-template-columns: 120px 1fr;
+  gap: 10px 16px;
+  margin: 12px 0 22px;
+}
+.kv b{ color: var(--muted); font-weight: 600; }
+
+/* Link badges row */
+.links-row{
+  display: flex; flex-wrap: wrap; gap: 10px; justify-content: center;
+  margin: 10px 0 26px;
+}
+.badge{
+  background: #0e1420;
+  border: 1px solid var(--border);
+  padding: 9px 14px;
+  border-radius: 999px;
+  color: var(--text);
+  font-size: 14px;
+}
+.badge:hover{ border-color: var(--accent); color: var(--accent-2); }
+
+/* Certificate list tighter + subtle bullets */
+.certs ul{ margin-left: 18px; }
+.certs li::marker{ color: var(--accent); }
+
+/* “Projects” bullets with subtle description */
+.project-title{ font-weight: 700; }
+.project-desc{ color: var(--muted); }
+
+/* Code text option (if needed) */
+code, pre{
+  font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  background: #0c1117;
+  border: 1px solid var(--border);
+  color: var(--text);
+  border-radius: 8px;
+}
+pre{ padding: 14px; overflow: auto; }
+
+/* Responsive tweaks */
+@media (max-width: 680px){
+  .main-content{ padding: 28px 22px; }
+  .kv{ grid-template-columns: 1fr; }
+}
