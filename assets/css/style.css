@@ -4,15 +4,15 @@
 
 /* ---------- Design tokens ---------- */
 :root{
-  --bg:        #0b0f14;
-  --panel:     #11161d;
-  --panel-2:   #0f141a;
-  --text:      #e6edf3;
-  --muted:     #9da7b3;
-  --accent:    #4f9cff;  /* primary blue */
-  --accent-2:  #6ee7ff;  /* electric cyan */
-  --border:    #1e2630;
-  --shadow:    0 10px 20px rgba(0,0,0,.35);
+  --bg:        #0f0f0f;   /* rich dark grey background */
+  --panel:     #1a1a1a;   /* card panel top */
+  --panel-2:   #1c1c1c;   /* card panel bottom */
+  --text:      #e8e8e8;   /* light grey text */
+  --muted:     #b0b0b0;   /* muted grey */
+  --accent:    #9e9e9e;   /* corporate medium grey */
+  --accent-2:  #d0d0d0;   /* lighter grey for hover */
+  --border:    #2a2a2a;
+  --shadow:    0 10px 20px rgba(0,0,0,.45);
 }
 
 /* ---------- Global ---------- */
@@ -20,9 +20,11 @@ html, body{
   background: var(--bg);
   color: var(--text);
   font-family: "Inter", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-  line-height: 1.6;
+  line-height: 1.7;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
+  margin: 0;
+  padding: 0;
 }
 
 /* Centered, card-like main content */
@@ -34,6 +36,7 @@ html, body{
   box-shadow: var(--shadow);
   border-radius: 16px;
   padding: 40px 48px;
+  text-align: center; /* centers everything inside */
 }
 
 /* Links */
@@ -51,6 +54,7 @@ a:hover{ color: var(--accent-2); }
   font-size: clamp(32px, 4vw, 44px);
   letter-spacing: 0.2px;
   margin: 0 0 8px;
+  color: var(--text);
 }
 
 /* Subtitle (your first paragraph or bold line under H1) */
@@ -58,39 +62,42 @@ a:hover{ color: var(--accent-2); }
   text-align: center;
   color: var(--muted);
   margin: 6px 0 28px;
-  font-size: 15.5px;
+  font-size: 16px;
 }
 
 /* Section headings */
 h2{
   font-weight: 700;
   font-size: clamp(20px, 2.6vw, 24px);
-  margin: 28px 0 14px;
+  margin: 32px 0 14px;
   position: relative;
   color: var(--text);
+  text-align: center;
 }
 h2::after{
   content:"";
   display:block;
   height: 2px;
-  width: 100%;
-  margin-top: 10px;
+  width: 60%;
+  margin: 12px auto 0;
   background: linear-gradient(90deg, var(--accent), transparent 60%);
-  opacity: .6;
+  opacity: .5;
 }
 
 /* Body text + lists */
-p{ margin: 8px 0 14px; color: var(--text); }
-ul{ margin: 8px 0 16px 22px; }
+p{ margin: 10px auto 20px; color: var(--text); text-align: center; max-width: 800px; }
+ul{ margin: 10px auto 20px; padding: 0; list-style-position: inside; text-align: center; }
 li{ margin: 6px 0; }
 strong{ color: var(--text); }
 
-/* Key/Value rows (Email, GitHub, ORCID) */
+/* Key/Value rows (optional grid style) */
 .kv{
   display: grid;
   grid-template-columns: 120px 1fr;
   gap: 10px 16px;
-  margin: 12px 0 22px;
+  margin: 20px auto;
+  max-width: 600px;
+  text-align: left;
 }
 .kv b{ color: var(--muted); font-weight: 600; }
 
@@ -100,7 +107,7 @@ strong{ color: var(--text); }
   margin: 10px 0 26px;
 }
 .badge{
-  background: #0e1420;
+  background: #1e1e1e;
   border: 1px solid var(--border);
   padding: 9px 14px;
   border-radius: 999px;
@@ -110,7 +117,7 @@ strong{ color: var(--text); }
 .badge:hover{ border-color: var(--accent); color: var(--accent-2); }
 
 /* Certificate list tighter + subtle bullets */
-.certs ul{ margin-left: 18px; }
+.certs ul{ margin-left: 0; padding: 0; }
 .certs li::marker{ color: var(--accent); }
 
 /* “Projects” bullets with subtle description */
@@ -120,7 +127,7 @@ strong{ color: var(--text); }
 /* Code text option (if needed) */
 code, pre{
   font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
-  background: #0c1117;
+  background: #1c1c1c;
   border: 1px solid var(--border);
   color: var(--text);
   border-radius: 8px;
@@ -129,6 +136,6 @@ pre{ padding: 14px; overflow: auto; }
 
 /* Responsive tweaks */
 @media (max-width: 680px){
-  .main-content{ padding: 28px 22px; }
-  .kv{ grid-template-columns: 1fr; }
+  .main-content{ padding: 28px 20px; }
+  .kv{ grid-template-columns: 1fr; text-align: center; }
 }
