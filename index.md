@@ -42,7 +42,7 @@ Industrial systems leader transitioning into AI/ML engineering. Proven track rec
 ---
 
 ## AI/ML Projects
-- **Exploratory Data Analysis (FoodHub)**
+- **Exploratory Data Analysis (FoodHub)** -
   <a href="https://github.com/CGM-AIML/Exploratory-Data-Analysis" target="_blank" rel="noopener noreferrer">Repo</a> 
   Customer retention insights through data cleaning, visualization, and EDA.  
 
