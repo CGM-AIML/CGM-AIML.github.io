@@ -1,15 +1,16 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
-
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/assets/css/style.css">
 
+<div class="main-content">
+
+# Christopher Gonzalez-Mejias
 <p class="hero-sub">AI/ML-Powered Industrial Leader • Reliability, Automation, Machine Learning</p>
 
 <div class="links-row">
   <a class="badge" href="mailto:automationspecialist72@yahoo.com">Email</a>
   <a class="badge" href="https://github.com/CGM-AIML">GitHub</a>
   <a class="badge" href="https://orcid.org/0009-0006-4627-6960">ORCID</a>
-  <!-- Add LinkedIn when ready -->
 </div>
 
 ---
@@ -80,3 +81,5 @@ Industrial systems leader transitioning into AI/ML engineering. Proven track rec
 ## Contact
 **Email:** automationspecialist72@yahoo.com  
 **Download Resume (PDF):** [Christopher_Gonzalez-Mejias_Resume.pdf](/assets/docs/Christopher_Gonzalez-Mejias_Resume.pdf)
+
+</div> <!-- end .main-content -->
