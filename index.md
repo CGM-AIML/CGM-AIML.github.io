@@ -42,11 +42,13 @@ Industrial systems leader transitioning into AI/ML engineering. Proven track rec
 ---
 
 ## AI/ML Projects
-- **Exploratory Data Analysis (FoodHub)** – [Repo](https://github.com/CGM-AIML/Exploratory-Data-Analysis)  
+- **Exploratory Data Analysis (FoodHub)**
+  <a href="https://github.com/CGM-AIML/Exploratory-Data-Analysis" target="_blank" rel="noopener noreferrer">Repo</a> 
   Customer retention insights through data cleaning, visualization, and EDA.  
 
-- **ML Modeling (AllLife Bank)** – [Repo](https://github.com/CGM-AIML/ML-Modeling)  
-  Full ML pipeline: data preparation, feature engineering, training, tuning, ROC-AUC evaluation.    
+- **ML Modeling (AllLife Bank)** – 
+  <a href="https://github.com/CGM-AIML/ML-Modeling" target="_blank" rel="noopener noreferrer">Repo</a>  
+  Full ML pipeline: data preparation, feature engineering, training, tuning, ROC-AUC evaluation.   
 
 ---
 
@@ -54,18 +56,16 @@ Industrial systems leader transitioning into AI/ML engineering. Proven track rec
 ### Hill’s Pet Nutrition – S.M.A.R.T. Factory (2023)
 - Startup team member for Hill’s first **digital-first S.M.A.R.T. Factory**.  
 - FAT/sFAT, I/O checks, PLC/HMI commissioning, AGVs, AMRs, vision systems.  
-- Featured by Gray Solutions: [Case Study](https://www.gray.com/projects/hills-pet-nutrition/)  
+- Featured by Gray Solutions: 
+  <a href="https://www.gray.com/projects/hills-pet-nutrition/" target="_blank" rel="noopener noreferrer">Case Study</a>  
 
 ### Mauser Packaging – $11M Revitalization (2024–Present)
 - Leading turnaround initiatives and predictive maintenance programs.  
-<!-- remove these placeholder images or replace with real paths to avoid layout issues -->
-<!-- ![Before](/assets/img/mauser_before.jpg)  
-![After](/assets/img/mauser_after.jpg)  -->
 
 ### Delta Designs – Museum Storage Fabrication (2016–2017)
 - Fabricated conservation-grade cabinetry for KU, Smithsonian, Perot.  
-- Still featured on Delta’s product site: [Delta Designs](https://www.deltadesignsltd.com/our-products/)  
-<!-- ![Delta Drawer Build](/assets/img/delta_drawers.jpg)  -->
+- Still featured on Delta’s product site: 
+  <a href="https://www.deltadesignsltd.com/our-products/" target="_blank" rel="noopener noreferrer">Delta Designs</a>  
 
 ---
 
@@ -79,6 +79,7 @@ Industrial systems leader transitioning into AI/ML engineering. Proven track rec
 ---
 
 ## Resume
-**Download Resume (PDF):** [Christopher_Gonzalez-Mejias_Resume.pdf](/assets/docs/Christopher_Gonzalez-Mejias_Resume.pdf)
+**Download Resume (PDF):** 
+<a href="/assets/docs/Christopher_Gonzalez-Mejias_Resume.pdf" target="_blank" rel="noopener noreferrer">Christopher_Gonzalez-Mejias_Resume.pdf</a>
 
 </div>
