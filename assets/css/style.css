@@ -1,348 +1,433 @@
-/* =========================================================
-   Portfolio Theme – Dark + Gold
-   Author: You
-   Purpose: Drop-in CSS for a modern, accessible portfolio
-   ========================================================= */
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Christopher Gonzalez‑Mejias – Portfolio</title>
 
-/* ---------- Global Reset & Base ---------- */
-*, *::before, *::after { box-sizing: border-box; }
-html { scroll-behavior: smooth; }
-html, body { height: 100%; }
-body {
-  margin: 0;
-  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-  line-height: 1.6;
-  color: var(--text);
-  background: var(--bg);
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700&display=swap" rel="stylesheet">
 
-/* ---------- Design Tokens ---------- */
-:root {
-  /* Color */
-  --bg:       #121112;   /* deep black */
-  --panel:    #444243;   /* card top */
-  --panel-2:  #646263;   /* card bottom */
-  --text:     #e8e8e8;   /* primary text */
-  --muted:    #b0b0b0;   /* secondary text */
-  --accent:   #9B773D;   /* gold/bronze */
-  --accent-2: #C9A96A;   /* lighter gold (hover) */
-  --border:   #615545;   /* taupe/brown borders */
-  --success:  #60d394;
-  --warning:  #f1c40f;
-  --danger:   #ff6b6b;
+  <style>
+  /* =========================================================
+     Portfolio Theme – Dark + Gold
+     Author: You
+     Purpose: Drop-in CSS for a modern, accessible portfolio
+     ========================================================= */
 
-  /* Effects */
-  --radius:   16px;
-  --shadow-1: 0 1px 2px rgba(0,0,0,.3);
-  --shadow-2: 0 6px 26px rgba(0,0,0,.35);
-
-  /* Layout */
-  --max-w: 1120px;
-  --gap:   24px;
-  --pad:   24px;
-
-  /* Typography */
-  --h1: clamp(2rem, 1.2rem + 2.5vw, 3.25rem);
-  --h2: clamp(1.5rem, 1rem + 1.6vw, 2.25rem);
-  --h3: clamp(1.25rem, 1rem + 1vw, 1.5rem);
-}
-
-/* ---------- Accessibility / Focus ---------- */
-:focus-visible {
-  outline: 2px solid var(--accent-2);
-  outline-offset: 3px;
-  border-radius: 6px;
-}
-
-/* ---------- Links ---------- */
-a {
-  color: var(--accent);
-  text-decoration: none;
-  transition: color .2s ease, opacity .2s ease;
-}
-a:hover { color: var(--accent-2); }
-a.muted { color: var(--muted); }
-a.muted:hover { color: var(--text); }
-
-/* ---------- Headings ---------- */
-h1, h2, h3 {
-  margin: 0 0 .5em;
-  line-height: 1.2;
-  letter-spacing: .2px;
-}
-h1 { font-size: var(--h1); }
-h2 { font-size: var(--h2); border-bottom: 1px solid var(--border); padding-bottom: .35em; }
-h3 { font-size: var(--h3); color: var(--accent-2); }
-
-/* ---------- Utilities ---------- */
-.container {
-  width: min(100% - 2*var(--pad), var(--max-w));
-  margin-inline: auto;
-}
-.grid {
-  display: grid;
-  gap: var(--gap);
-}
-.grid-2 { grid-template-columns: repeat(2, minmax(0,1fr)); }
-.grid-3 { grid-template-columns: repeat(3, minmax(0,1fr)); }
-.center { display:flex; align-items:center; justify-content:center; }
-.hidden { display: none !important; }
-.muted { color: var(--muted); }
-.tag {
-  display:inline-flex; align-items:center; gap:.4em;
-  padding: .35rem .6rem; border:1px solid var(--border);
-  border-radius: 999px; color: var(--text); background: #1b1a1b;
-  font-size:.85rem;
-}
-
-/* ---------- Buttons ---------- */
-.btn {
-  display:inline-flex; align-items:center; justify-content:center; gap:.5rem;
-  padding:.7rem 1rem; border-radius: calc(var(--radius) - 6px);
-  border:1px solid var(--border);
-  background: linear-gradient(180deg, #2a2829, #201f20);
-  color: var(--text); box-shadow: var(--shadow-1);
-  transition: transform .08s ease, box-shadow .2s ease, border-color .2s ease;
-  cursor: pointer; user-select: none; text-decoration: none;
-}
-.btn:hover {
-  border-color: var(--accent);
-  box-shadow: 0 4px 16px rgba(155, 119, 61, .25);
-}
-.btn:active { transform: translateY(1px); }
-.btn.gold {
-  background: linear-gradient(180deg, var(--accent), var(--accent-2));
-  color: #151515; border-color: transparent;
-}
-.btn.gold:hover { box-shadow: 0 6px 20px rgba(201, 169, 106, .3); }
-
-/* ---------- Cards ---------- */
-.card {
-  position: relative;
-  border-radius: var(--radius);
-  background:
-    linear-gradient(180deg, var(--panel), var(--panel-2));
-  border: 1px solid var(--border);
-  box-shadow: var(--shadow-2);
-  overflow: hidden;
-}
-.card .card-body { padding: 20px; }
-.card .card-footer {
-  display:flex; align-items:center; gap:10px;
-  padding: 16px 20px; border-top:1px solid var(--border);
-  background: rgba(0,0,0,.15);
-}
-
-/* Top accent line */
-.card::before {
-  content:"";
-  position:absolute; inset:0 0 auto 0; height:3px;
-  background: linear-gradient(90deg, transparent, var(--accent), var(--accent-2), transparent);
-  opacity:.8;
-}
-
-/* ---------- Page Header / Hero ---------- */
-.page-header { display: none !important; } /* If you’re embedding in a theme, keep ours only */
-
-.site-header {
-  position: sticky; top: 0; z-index: 50;
-  backdrop-filter: blur(8px);
-  background: rgba(18,17,18,.7);
-  border-bottom: 1px solid #1d1c1d;
-}
-.navbar {
-  display:flex; align-items:center; justify-content:space-between; gap: 14px;
-  padding: 12px 0;
-}
-.brand {
-  display:flex; align-items:center; gap:10px; font-weight:700; letter-spacing:.5px;
-}
-.brand .dot {
-  width: 10px; height: 10px; border-radius: 50%;
-  background: radial-gradient(circle at 30% 30%, var(--accent-2), var(--accent));
-  box-shadow: 0 0 16px rgba(201,169,106,.5);
-}
-.nav {
-  display:flex; align-items:center; gap: 14px;
-}
-.nav a {
-  display:inline-block; padding:.4rem .7rem; border-radius: 999px;
-  color: var(--muted); border:1px solid transparent;
-}
-.nav a:hover {
-  color: var(--text); border-color: var(--border);
-  background: rgba(255,255,255,.03);
-}
-
-.hero {
-  padding: clamp(48px, 6vw, 96px) 0;
-}
-.hero .lead {
-  color: var(--muted);
-  max-width: 70ch;
-}
-
-/* ---------- Sections ---------- */
-.section {
-  padding: 56px 0;
-  border-top: 1px solid #1d1c1d;
-}
-.section-header {
-  display:flex; align-items:baseline; justify-content:space-between; gap: 12px;
-  margin-bottom: 20px;
-}
-.section-actions { display:flex; gap:10px; }
-
-/* ---------- Projects ---------- */
-.project {
-  display:flex; flex-direction:column; gap:12px;
-}
-.project .thumb {
-  aspect-ratio: 16 / 9;
-  background: #1b1a1b;
-  border-bottom: 1px solid var(--border);
-}
-.project h3 { margin: 6px 0 0; }
-.project .meta {
-  display:flex; flex-wrap:wrap; gap:8px;
-}
-.project .desc { color: var(--muted); margin: 6px 0 2px; }
-
-/* ---------- About ---------- */
-.about {
-  display:grid; grid-template-columns: 1.1fr .9fr; gap: var(--gap);
-}
-.about .avatar {
-  aspect-ratio: 1 / 1; border-radius: calc(var(--radius) - 6px);
-  background: #1b1a1b; border:1px solid var(--border);
-}
-
-/* ---------- Experience / Timeline ---------- */
-.timeline {
-  position: relative; padding-left: 26px;
-}
-.timeline::before {
-  content:""; position:absolute; left:8px; top:0; bottom:0;
-  width: 2px; background: linear-gradient(180deg, var(--accent), transparent);
-  opacity:.5;
-}
-.timeline-item { position:relative; margin-bottom: 18px; }
-.timeline-item::before {
-  content:""; position:absolute; left:-1px; top:.4rem;
-  width: 10px; height:10px; border-radius:50%;
-  background: var(--accent-2);
-  box-shadow: 0 0 12px rgba(201,169,106,.5);
-}
-.timeline-item h3 { margin:0; }
-.timeline-item .where { color: var(--muted); font-size:.95rem; }
-.timeline-item .when { color: var(--muted); font-size:.85rem; }
-
-/* ---------- Skills ---------- */
-.skills { display:flex; flex-wrap:wrap; gap:10px; }
-
-/* ---------- Forms / Contact ---------- */
-input, textarea, select {
-  width: 100%; color: var(--text); background: #1b1a1b;
-  border: 1px solid var(--border);
-  border-radius: calc(var(--radius) - 10px);
-  padding: .8rem .9rem; outline: none;
-  transition: border-color .2s ease, box-shadow .2s ease;
-}
-textarea { min-height: 140px; resize: vertical; }
-input::placeholder, textarea::placeholder { color: #9a9a9a; }
-input:focus, textarea:focus, select:focus {
-  border-color: var(--accent-2);
-  box-shadow: 0 0 0 3px rgba(201,169,106,.15);
-}
-
-/* ---------- Footer ---------- */
-.site-footer { display: none !important; } /* Hide external theme footer if present */
-
-.footer {
-  border-top: 1px solid #1d1c1d;
-  padding: 26px 0 36px;
-  color: var(--muted);
-}
-.footer .row {
-  display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap: 10px;
-}
-.footer .social { display:flex; gap: 10px; }
-
-/* ---------- Tables (for resume or lists) ---------- */
-.table {
-  width:100%; border-collapse: collapse; border:1px solid var(--border);
-  border-radius: var(--radius); overflow: hidden;
-}
-.table th, .table td {
-  padding: .8rem 1rem; border-bottom:1px solid var(--border);
-}
-.table thead th {
-  background: #1b1a1b; color: var(--accent-2); text-align:left;
-}
-
-/* ---------- Code / Pre ---------- */
-code, pre {
-  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-}
-pre {
-  background: #1b1a1b; color: var(--text);
-  border: 1px solid var(--border);
-  border-radius: calc(var(--radius) - 8px);
-  padding: 1rem; overflow: auto;
-}
-
-/* ---------- Media / Images ---------- */
-img, video { max-width: 100%; height: auto; display:block; }
-figure { margin: 0; }
-figcaption { color: var(--muted); font-size: .9rem; margin-top: .4rem; }
-
-/* ---------- Animations (subtle) ---------- */
-@media (prefers-reduced-motion: no-preference) {
-  .fade-in { animation: fade-in .6s ease both; }
-  .rise { animation: rise .5s ease both; }
-}
-@keyframes fade-in { from { opacity:0 } to { opacity:1 } }
-@keyframes rise { from { opacity:0; transform: translateY(8px) } to { opacity:1; transform: none } }
-
-/* ---------- Responsive ---------- */
-@media (max-width: 1024px) {
-  .grid-3 { grid-template-columns: repeat(2, minmax(0,1fr)); }
-  .about { grid-template-columns: 1fr; }
-}
-@media (max-width: 680px) {
-  .nav { display:none; } /* (Optional) hide desktop nav; use a mobile menu if you add one */
-  .grid-2, .grid-3 { grid-template-columns: 1fr; }
-  :root { --pad: 18px; --gap: 18px; }
-  .section { padding: 42px 0; }
-  .navbar { padding: 10px 0; }
-}
-
-/* ---------- Print (nice PDF resume export) ---------- */
-@media print {
-  :root { --bg: #ffffff; --text:#111; --muted:#444; --accent:#222; --accent-2:#333; --border:#ddd; }
-  body { background: #fff; color: #111; }
-  .site-header, .footer { display:none; }
-  a { color: #111; text-decoration: underline; }
-  .card, .table, pre, input, textarea, select {
-    box-shadow: none !important;
-    border-color: #ccc !important;
-    background: #fff !important;
-    color: #111 !important;
+  /* ---------- Global Reset & Base ---------- */
+  *, *::before, *::after { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  html, body { height: 100%; }
+  body {
+    margin: 0;
+    font-family: Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    line-height: 1.6;
+    color: var(--text);
+    background: var(--bg);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
-}
 
-/* ---------- Optional Light Mode Override ---------- */
-/* Add data-theme="light" to <html> to use */
-html[data-theme="light"] {
-  --bg: #f8f8f8;
-  --panel: #ffffff;
-  --panel-2: #f3f3f3;
-  --text: #1a1a1a;
-  --muted: #4d4d4d;
-  --accent: #7a5b26;
-  --accent-2: #a37f3b;
-  --border: #e2e2e2;
-  background: var(--bg);
-}
+  /* ---------- Design Tokens ---------- */
+  :root {
+    /* Color */
+    --bg:       #121112;   /* deep black */
+    --panel:    #444243;   /* card top */
+    --panel-2:  #646263;   /* card bottom */
+    --text:     #e8e8e8;   /* primary text */
+    --muted:    #b0b0b0;   /* secondary text */
+    --accent:   #9B773D;   /* gold/bronze */
+    --accent-2: #C9A96A;   /* lighter gold (hover) */
+    --border:   #615545;   /* taupe/brown borders */
+    --success:  #60d394;
+    --warning:  #f1c40f;
+    --danger:   #ff6b6b;
+
+    /* Effects */
+    --radius:   16px;
+    --shadow-1: 0 1px 2px rgba(0,0,0,.3);
+    --shadow-2: 0 6px 26px rgba(0,0,0,.35);
+
+    /* Layout */
+    --max-w: 1120px;
+    --gap:   24px;
+    --pad:   24px;
+
+    /* Typography */
+    --h1: clamp(2rem, 1.2rem + 2.5vw, 3.25rem);
+    --h2: clamp(1.5rem, 1rem + 1.6vw, 2.25rem);
+    --h3: clamp(1.25rem, 1rem + 1vw, 1.5rem);
+  }
+
+  /* ---------- Accessibility / Focus ---------- */
+  :focus-visible {
+    outline: 2px solid var(--accent-2);
+    outline-offset: 3px;
+    border-radius: 6px;
+  }
+
+  /* ---------- Links ---------- */
+  a { color: var(--accent); text-decoration: none; transition: color .2s ease, opacity .2s ease; }
+  a:hover { color: var(--accent-2); }
+  a.muted { color: var(--muted); }
+  a.muted:hover { color: var(--text); }
+
+  /* ---------- Headings ---------- */
+  h1, h2, h3 { margin: 0 0 .5em; line-height: 1.2; letter-spacing: .2px; }
+  h1 { font-size: var(--h1); }
+  h2 { font-size: var(--h2); border-bottom: 1px solid var(--border); padding-bottom: .35em; }
+  h3 { font-size: var(--h3); color: var(--accent-2); }
+
+  /* ---------- Utilities ---------- */
+  .container { width: min(100% - 2*var(--pad), var(--max-w)); margin-inline: auto; }
+  .grid { display: grid; gap: var(--gap); }
+  .grid-2 { grid-template-columns: repeat(2, minmax(0,1fr)); }
+  .grid-3 { grid-template-columns: repeat(3, minmax(0,1fr)); }
+  .center { display:flex; align-items:center; justify-content:center; }
+  .hidden { display: none !important; }
+  .muted { color: var(--muted); }
+  .tag { display:inline-flex; align-items:center; gap:.4em; padding: .35rem .6rem; border:1px solid var(--border); border-radius: 999px; color: var(--text); background: #1b1a1b; font-size:.85rem; }
+
+  /* ---------- Buttons ---------- */
+  .btn { display:inline-flex; align-items:center; justify-content:center; gap:.5rem; padding:.7rem 1rem; border-radius: calc(var(--radius) - 6px); border:1px solid var(--border); background: linear-gradient(180deg, #2a2829, #201f20); color: var(--text); box-shadow: var(--shadow-1); transition: transform .08s ease, box-shadow .2s ease, border-color .2s ease; cursor: pointer; user-select: none; text-decoration: none; }
+  .btn:hover { border-color: var(--accent); box-shadow: 0 4px 16px rgba(155, 119, 61, .25); }
+  .btn:active { transform: translateY(1px); }
+  .btn.gold { background: linear-gradient(180deg, var(--accent), var(--accent-2)); color: #151515; border-color: transparent; }
+  .btn.gold:hover { box-shadow: 0 6px 20px rgba(201, 169, 106, .3); }
+
+  /* ---------- Cards ---------- */
+  .card { position: relative; border-radius: var(--radius); background: linear-gradient(180deg, var(--panel), var(--panel-2)); border: 1px solid var(--border); box-shadow: var(--shadow-2); overflow: hidden; }
+  .card .card-body { padding: 20px; }
+  .card .card-footer { display:flex; align-items:center; gap:10px; padding: 16px 20px; border-top:1px solid var(--border); background: rgba(0,0,0,.15); }
+  .card::before { content:""; position:absolute; inset:0 0 auto 0; height:3px; background: linear-gradient(90deg, transparent, var(--accent), var(--accent-2), transparent); opacity:.8; }
+
+  /* ---------- Page Header / Hero ---------- */
+  .page-header { display: none !important; }
+  .site-header { position: sticky; top: 0; z-index: 50; backdrop-filter: blur(8px); background: rgba(18,17,18,.7); border-bottom: 1px solid #1d1c1d; }
+  .navbar { display:flex; align-items:center; justify-content:space-between; gap: 14px; padding: 12px 0; }
+  .brand { display:flex; align-items:center; gap:10px; font-weight:700; letter-spacing:.5px; font-family: "Plus Jakarta Sans", Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial; }
+  .brand .dot { width: 10px; height: 10px; border-radius: 50%; background: radial-gradient(circle at 30% 30%, var(--accent-2), var(--accent)); box-shadow: 0 0 16px rgba(201,169,106,.5); }
+  .nav { display:flex; align-items:center; gap: 14px; }
+  .nav a { display:inline-block; padding:.4rem .7rem; border-radius: 999px; color: var(--muted); border:1px solid transparent; }
+  .nav a:hover { color: var(--text); border-color: var(--border); background: rgba(255,255,255,.03); }
+
+  .hero { padding: clamp(48px, 6vw, 96px) 0; }
+  .hero .lead { color: var(--muted); max-width: 70ch; }
+
+  /* ---------- Sections ---------- */
+  .section { padding: 56px 0; border-top: 1px solid #1d1c1d; }
+  .section-header { display:flex; align-items:baseline; justify-content:space-between; gap: 12px; margin-bottom: 20px; }
+  .section-actions { display:flex; gap:10px; }
+
+  /* ---------- Projects ---------- */
+  .project { display:flex; flex-direction:column; gap:12px; }
+  .project .thumb { aspect-ratio: 16 / 9; background: #1b1a1b; border-bottom: 1px solid var(--border); }
+  .project h3 { margin: 6px 0 0; }
+  .project .meta { display:flex; flex-wrap:wrap; gap:8px; }
+  .project .desc { color: var(--muted); margin: 6px 0 2px; }
+
+  /* ---------- About ---------- */
+  .about { display:grid; grid-template-columns: 1.1fr .9fr; gap: var(--gap); }
+  .about .avatar { aspect-ratio: 1 / 1; border-radius: calc(var(--radius) - 6px); background: #1b1a1b; border:1px solid var(--border); }
+
+  /* ---------- Experience / Timeline ---------- */
+  .timeline { position: relative; padding-left: 26px; }
+  .timeline::before { content:""; position:absolute; left:8px; top:0; bottom:0; width: 2px; background: linear-gradient(180deg, var(--accent), transparent); opacity:.5; }
+  .timeline-item { position:relative; margin-bottom: 18px; }
+  .timeline-item::before { content:""; position:absolute; left:-1px; top:.4rem; width: 10px; height:10px; border-radius:50%; background: var(--accent-2); box-shadow: 0 0 12px rgba(201,169,106,.5); }
+  .timeline-item h3 { margin:0; }
+  .timeline-item .where { color: var(--muted); font-size:.95rem; }
+  .timeline-item .when { color: var(--muted); font-size:.85rem; }
+
+  /* ---------- Skills ---------- */
+  .skills { display:flex; flex-wrap:wrap; gap:10px; }
+
+  /* ---------- Forms / Contact ---------- */
+  input, textarea, select { width: 100%; color: var(--text); background: #1b1a1b; border: 1px solid var(--border); border-radius: calc(var(--radius) - 10px); padding: .8rem .9rem; outline: none; transition: border-color .2s ease, box-shadow .2s ease; }
+  textarea { min-height: 140px; resize: vertical; }
+  input::placeholder, textarea::placeholder { color: #9a9a9a; }
+  input:focus, textarea:focus, select:focus { border-color: var(--accent-2); box-shadow: 0 0 0 3px rgba(201,169,106,.15); }
+
+  /* ---------- Footer ---------- */
+  .site-footer { display: none !important; }
+  .footer { border-top: 1px solid #1d1c1d; padding: 26px 0 36px; color: var(--muted); }
+  .footer .row { display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap: 10px; }
+  .footer .social { display:flex; gap: 10px; }
+
+  /* ---------- Tables ---------- */
+  .table { width:100%; border-collapse: collapse; border:1px solid var(--border); border-radius: var(--radius); overflow: hidden; }
+  .table th, .table td { padding: .8rem 1rem; border-bottom:1px solid var(--border); }
+  .table thead th { background: #1b1a1b; color: var(--accent-2); text-align:left; }
+
+  /* ---------- Code / Pre ---------- */
+  code, pre { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; }
+  pre { background: #1b1a1b; color: var(--text); border: 1px solid var(--border); border-radius: calc(var(--radius) - 8px); padding: 1rem; overflow: auto; }
+
+  /* ---------- Media / Images ---------- */
+  img, video { max-width: 100%; height: auto; display:block; }
+  figure { margin: 0; }
+  figcaption { color: var(--muted); font-size: .9rem; margin-top: .4rem; }
+
+  /* ---------- Animations (subtle) ---------- */
+  @media (prefers-reduced-motion: no-preference) {
+    .fade-in { animation: fade-in .6s ease both; }
+    .rise { animation: rise .5s ease both; }
+  }
+  @keyframes fade-in { from { opacity:0 } to { opacity:1 } }
+  @keyframes rise { from { opacity:0; transform: translateY(8px) } to { opacity:1; transform: none } }
+
+  /* ---------- Responsive ---------- */
+  @media (max-width: 1024px) {
+    .grid-3 { grid-template-columns: repeat(2, minmax(0,1fr)); }
+    .about { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 680px) {
+    .nav { display:none; }
+    .grid-2, .grid-3 { grid-template-columns: 1fr; }
+    :root { --pad: 18px; --gap: 18px; }
+    .section { padding: 42px 0; }
+    .navbar { padding: 10px 0; }
+  }
+
+  /* ---------- Print ---------- */
+  @media print {
+    :root { --bg: #ffffff; --text:#111; --muted:#444; --accent:#222; --accent-2:#333; --border:#ddd; }
+    body { background: #fff; color: #111; }
+    .site-header, .footer { display:none; }
+    a { color: #111; text-decoration: underline; }
+    .card, .table, pre, input, textarea, select { box-shadow: none !important; border-color: #ccc !important; background: #fff !important; color: #111 !important; }
+  }
+
+  /* ---------- Optional Light Mode Override ---------- */
+  html[data-theme="light"] {
+    --bg: #f8f8f8;
+    --panel: #ffffff;
+    --panel-2: #f3f3f3;
+    --text: #1a1a1a;
+    --muted: #4d4d4d;
+    --accent: #7a5b26;
+    --accent-2: #a37f3b;
+    --border: #e2e2e2;
+    background: var(--bg);
+  }
+  </style>
+</head>
+<body>
+  <!-- HEADER / NAV -->
+  <header class="site-header">
+    <div class="container navbar">
+      <div class="brand">
+        <span class="dot" aria-hidden="true"></span>
+        <span>Christopher Gonzalez‑Mejias</span>
+      </div>
+      <nav class="nav" aria-label="Primary Navigation">
+        <a href="#about">About</a>
+        <a href="#aiml">AI/ML Projects</a>
+        <a href="#industrial">Industrial</a>
+        <a href="#honors">Honors</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container">
+      <h1 class="fade-in">Christopher Gonzalez‑Mejias</h1>
+      <p class="lead">AI/ML‑Powered Industrial Leader • Reliability, Automation, Machine Learning</p>
+      <div style="display:flex; gap:10px; margin-top:14px; flex-wrap:wrap;">
+        <a class="btn gold" href="mailto:automationspecialist72@yahoo.com">Email</a>
+        <a class="btn" href="https://github.com/CGM-AIML" target="_blank" rel="noopener noreferrer">GitHub</a>
+        <a class="btn" href="https://orcid.org/0009-0006-4627-6960" target="_blank" rel="noopener noreferrer">ORCID</a>
+        <a class="btn" href="#resume">Resume (PDF)</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about" class="section">
+    <div class="container about">
+      <div class="card rise">
+        <div class="card-body">
+          <h2>About Me</h2>
+          <p class="muted">Industrial systems leader transitioning into AI/ML engineering. Proven track record in automation, controls, and reliability across injection and blow‑molding operations, managing multimillion‑dollar revitalization projects and leading cross‑functional teams. Currently advancing in machine learning and MLOps through the UT Austin / Great Learning Post Graduate Program in AI & ML. Recognized with Mortar Board and Tri‑Alpha honors for academic excellence.</p>
+
+          <h3>Certifications & Education</h3>
+          <ul>
+            <li><strong>Post Graduate Program in AI & ML: Business Applications (2025–2026)</strong> – UT Austin / Great Learning <em>(in progress)</em></li>
+            <li><strong>A.S., Industrial Sciences – Advanced Systems Technology (2025)</strong> – Washburn University — <em>Dean’s Honor Roll, Mortar Board, Tri‑Alpha</em></li>
+          </ul>
+
+          <h3>Selected Certificates</h3>
+          <div class="skills">
+            <a class="tag" href="/assets/docs/Learning_PLC_Ladder_Logic_2023_CGM.pdf" target="_blank" rel="noopener">PLC Ladder Logic</a>
+            <a class="tag" href="/assets/docs/CertificateOfCompletion_Learning_SQL_Programming_CGM_2023.pdf" target="_blank" rel="noopener">SQL Programming</a>
+            <a class="tag" href="/assets/docs/Basics_of_Cisco_Networking_Christopher_Gonzalez-Mejias_2025.pdf" target="_blank" rel="noopener">Cisco Networking Basics</a>
+            <a class="tag" href="/assets/docs/Better_Processing_School_Christopher_Gonzalez-Mejias_Cert-Signed_2023.pdf" target="_blank" rel="noopener">Food Safety</a>
+            <a class="tag" href="/assets/docs/SimuTech_Troubleshooting_Electrical_Circuits_2022_CGM.pdf" target="_blank" rel="noopener">Electrical Troubleshooting</a>
+            <a class="tag" href="/assets/docs/ACR_Safety_R410A_Chris_Gonzalez-Mejias_2019.pdf" target="_blank" rel="noopener">R‑410A Safety</a>
+            <a class="tag" href="/assets/docs/FLL_Certificate_of_Achievement_CGM_2025.pdf" target="_blank" rel="noopener">Front Line Leadership</a>
+            <a class="tag" href="/assets/docs/Stop_The_Bleed_C_Gonzalez-Mejias.pdf" target="_blank" rel="noopener">Stop the Bleed</a>
+            <a class="tag" href="/assets/docs/Gonzalez-Mejias_Christopher_Deans_Honor_Roll_2023-2024.pdf" target="_blank" rel="noopener">Dean’s Honor Roll</a>
+            <a class="tag" href="/assets/docs/Python_Foundations_Christopher_Gonzalez-Mejias.pdf" target="_blank" rel="noopener">Python Foundations</a>
+          </div>
+        </div>
+      </div>
+      <div class="avatar card rise" aria-hidden="true"></div>
+    </div>
+  </section>
+
+  <!-- AI/ML PROJECTS -->
+  <section id="aiml" class="section">
+    <div class="container">
+      <div class="section-header">
+        <h2>AI/ML Projects</h2>
+        <div class="section-actions">
+          <a class="btn" href="https://github.com/CGM-AIML" target="_blank" rel="noopener">View GitHub</a>
+        </div>
+      </div>
+
+      <div class="grid grid-2">
+        <article class="card">
+          <div class="thumb"></div>
+          <div class="card-body">
+            <h3>Exploratory Data Analysis (FoodHub)</h3>
+            <p class="desc">Customer retention insights through data cleaning, visualization, and EDA.</p>
+            <div class="meta">
+              <span class="tag">Python</span>
+              <span class="tag">Pandas</span>
+              <span class="tag">Matplotlib</span>
+            </div>
+          </div>
+          <div class="card-footer">
+            <a class="btn" href="https://github.com/CGM-AIML/Exploratory-Data-Analysis" target="_blank" rel="noopener">Repo</a>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="thumb"></div>
+          <div class="card-body">
+            <h3>ML Modeling (AllLife Bank)</h3>
+            <p class="desc">Full ML pipeline: data preparation, feature engineering, training, tuning, ROC‑AUC evaluation.</p>
+            <div class="meta">
+              <span class="tag">Scikit‑learn</span>
+              <span class="tag">EDA</span>
+              <span class="tag">ROC‑AUC</span>
+            </div>
+          </div>
+          <div class="card-footer">
+            <a class="btn" href="https://github.com/CGM-AIML/ML-Modeling" target="_blank" rel="noopener">Repo</a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- INDUSTRIAL PROJECTS -->
+  <section id="industrial" class="section">
+    <div class="container">
+      <h2>Industrial Projects</h2>
+      <div class="timeline">
+        <div class="timeline-item">
+          <h3>Hill’s Pet Nutrition – S.M.A.R.T. Factory <span class="when">(2023)</span></h3>
+          <div class="where">Startup team member for Hill’s first digital‑first S.M.A.R.T. Factory.</div>
+          <p class="muted">FAT/sFAT, I/O checks, PLC/HMI commissioning, AGVs, AMRs, vision systems. Featured by Gray Solutions: <a href="https://www.gray.com/projects/hills-pet-nutrition/" target="_blank" rel="noopener">Case Study</a>.</p>
+        </div>
+        <div class="timeline-item">
+          <h3>Mauser Packaging – $11M Revitalization <span class="when">(2024–Present)</span></h3>
+          <div class="where">Leading turnaround initiatives and predictive maintenance programs.</div>
+        </div>
+        <div class="timeline-item">
+          <h3>Delta Designs – Museum Storage Fabrication <span class="when">(2016–2017)</span></h3>
+          <div class="where">Fabricated conservation‑grade cabinetry for KU, Smithsonian, Perot. <a href="https://www.deltadesignsltd.com/our-products/" target="_blank" rel="noopener">Delta Designs</a>.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HONORS -->
+  <section id="honors" class="section">
+    <div class="container">
+      <h2>Honors & Recognition</h2>
+      <div class="grid grid-3">
+        <div class="card"><div class="card-body"><strong>Mortar Board National Honor Society</strong><br><span class="muted">2025</span></div></div>
+        <div class="card"><div class="card-body"><strong>Alpha Alpha Alpha (Tri‑Alpha) First‑Gen</strong><br><span class="muted">2025</span></div></div>
+        <div class="card"><div class="card-body"><strong>Dean’s Honor Roll, Washburn University</strong><br><span class="muted">2023–2024</span></div></div>
+        <div class="card"><div class="card-body"><strong>National Technical Honor Society</strong><br><span class="muted">2018</span></div></div>
+        <div class="card"><div class="card-body"><strong>SkillsUSA – 1st Place, Mechatronics</strong><br><span class="muted">2018</span></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- RESUME -->
+  <section id="resume" class="section">
+    <div class="container">
+      <h2>Resume</h2>
+      <div class="card">
+        <div class="card-body">
+          <p><strong>Download Resume (PDF):</strong> <a href="/assets/docs/Christopher_Gonzalez-Mejias_Resume.pdf" target="_blank" rel="noopener">Christopher_Gonzalez-Mejias_Resume.pdf</a></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="section">
+    <div class="container">
+      <h2>Contact</h2>
+      <div class="grid grid-2">
+        <form class="card" onsubmit="event.preventDefault(); alert('Thanks, I\'ll be in touch!');">
+          <div class="card-body">
+            <div style="display:grid; gap:12px;">
+              <label>
+                <span class="muted">Name</span>
+                <input type="text" placeholder="Your name" required>
+              </label>
+              <label>
+                <span class="muted">Email</span>
+                <input type="email" placeholder="your@email.com" required>
+              </label>
+              <label>
+                <span class="muted">Message</span>
+                <textarea placeholder="Tell me about your project" required></textarea>
+              </label>
+              <button class="btn gold" type="submit">Send</button>
+            </div>
+          </div>
+        </form>
+
+        <div class="card">
+          <div class="card-body">
+            <h3>Elsewhere</h3>
+            <p class="muted">Prefer email or a direct link? Use the buttons below.</p>
+            <div style="display:flex; gap:10px; flex-wrap:wrap;">
+              <a class="btn" href="mailto:automationspecialist72@yahoo.com">Email</a>
+              <a class="btn" href="https://github.com/CGM-AIML" target="_blank" rel="noopener">GitHub</a>
+              <a class="btn" href="https://orcid.org/0009-0006-4627-6960" target="_blank" rel="noopener">ORCID</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container row">
+      <span class="muted">© <span id="y"></span> Christopher Gonzalez‑Mejias</span>
+      <div class="social">
+        <a class="muted" href="#">Privacy</a>
+        <a class="muted" href="#">Terms</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Set dynamic year
+    document.getElementById('y').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
