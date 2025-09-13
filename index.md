@@ -2,7 +2,8 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/assets/css/style.css">
 
-<div class="main-content">
+<!-- ADD markdown="1" here -->
+<div class="main-content" markdown="1">
 
 # Christopher Gonzalez-Mejias
 <p class="hero-sub">AI/ML-Powered Industrial Leader • Reliability, Automation, Machine Learning</p>
@@ -37,7 +38,6 @@ Industrial systems leader transitioning into AI/ML engineering. Proven track rec
 - [Dean’s Honor Roll (2023–2024)](/assets/docs/Gonzalez-Mejias_Christopher_Deans_Honor_Roll_2023-2024.pdf)  
 - [Python Foundations (2025, UT Austin/Great Learning)](/assets/docs/Python_Foundations_Christopher_Gonzalez-Mejias.pdf)  
 
-
 ---
 
 ## AI/ML Projects
@@ -57,15 +57,14 @@ Industrial systems leader transitioning into AI/ML engineering. Proven track rec
 
 ### Mauser Packaging – $11M Revitalization (2024–Present)
 - Leading turnaround initiatives and predictive maintenance programs.  
-- Before/After photos:  
-  ![Before]()  
-  ![After]()  
+<!-- remove these placeholder images or replace with real paths to avoid layout issues -->
+<!-- ![Before](/assets/img/mauser_before.jpg)  
+![After](/assets/img/mauser_after.jpg)  -->
 
 ### Delta Designs – Museum Storage Fabrication (2016–2017)
 - Fabricated conservation-grade cabinetry for KU, Smithsonian, Perot.  
 - Still featured on Delta’s product site: [Delta Designs](https://www.deltadesignsltd.com/our-products/)  
-- Example photo:  
-  ![Delta Drawer Build]()  
+<!-- ![Delta Drawer Build](/assets/img/delta_drawers.jpg)  -->
 
 ---
 
@@ -81,4 +80,4 @@ Industrial systems leader transitioning into AI/ML engineering. Proven track rec
 ## Resume
 **Download Resume (PDF):** [Christopher_Gonzalez-Mejias_Resume.pdf](/assets/docs/Christopher_Gonzalez-Mejias_Resume.pdf)
 
-</div> <!-- end .main-content -->
+</div>
