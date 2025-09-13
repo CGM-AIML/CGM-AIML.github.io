@@ -39,17 +39,22 @@ Industrial systems leader transitioning into AI/ML engineering. Proven track rec
   <li><a href="/assets/docs/Stop_The_Bleed_C_Gonzalez-Mejias.pdf" target="_blank" rel="noopener noreferrer">Stop the Bleed (2025)</a>
   <li><a href="/assets/docs/Gonzalez-Mejias_Christopher_Deans_Honor_Roll_2023-2024.pdf" target="_blank" rel="noopener noreferrer">Dean’s Honor Roll (2023–2024)</a>
   <li><a href="/assets/docs/Python_Foundations_Christopher_Gonzalez-Mejias.pdf" target="_blank" rel="noopener noreferrer">Python Foundations (2025, UT Austin/Great Learning)</a>
+</ul>
 
 ---
 
 ## AI/ML Projects
- **Exploratory Data Analysis (FoodHub)** -
-  <a href="https://github.com/CGM-AIML/Exploratory-Data-Analysis" target="_blank" rel="noopener noreferrer">Repo</a> 
-  Customer retention insights through data cleaning, visualization, and EDA.  
+<div class="project">
+  <strong>Exploratory Data Analysis (FoodHub)</strong> – 
+  <a href="https://github.com/CGM-AIML/Exploratory-Data-Analysis" target="_blank" rel="noopener noreferrer">Repo</a><br>
+  Customer retention insights through data cleaning, visualization, and EDA.
+</div>
 
- **ML Modeling (AllLife Bank)** – 
-  <a href="https://github.com/CGM-AIML/ML-Modeling" target="_blank" rel="noopener noreferrer">Repo</a>  
-  Full ML pipeline: data preparation, feature engineering, training, tuning, ROC-AUC evaluation.   
+<div class="project">
+  <strong>ML Modeling (AllLife Bank)</strong> – 
+  <a href="https://github.com/CGM-AIML/ML-Modeling" target="_blank" rel="noopener noreferrer">Repo</a><br>
+  Full ML pipeline: data preparation, feature engineering, training, tuning, ROC-AUC evaluation.
+</div>
 
 ---
 
