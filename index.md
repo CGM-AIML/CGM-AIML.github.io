@@ -3,10 +3,6 @@
 
 <link rel="stylesheet" href="/assets/css/style.css">
 
-# Christopher Gonzalez-Mejias
-**AI/ML-Powered Industrial Leader**  
-Bridging reliability, automation, and AI/ML engineering
-
 <p class="hero-sub">AI/ML-Powered Industrial Leader • Reliability, Automation, Machine Learning</p>
 
 <div class="links-row">
