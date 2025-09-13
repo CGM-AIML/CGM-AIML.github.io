@@ -97,7 +97,7 @@ h2::after {
   height: 2px;
   width: 100%;  /* line matches text width */
   margin-top: 8px;
-  background: linear-gradient(90deg, var(--accent), transparent 70%);
+  background: linear-gradient(90deg, var(--accent), transparent 85%);
   opacity: .7;
 }
 
