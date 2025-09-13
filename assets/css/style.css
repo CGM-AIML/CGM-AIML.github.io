@@ -100,7 +100,7 @@ h2::after {
   background: linear-gradient(
     90deg,                      /* left → right */
     var(--accent),              /* start with gold */
-    transparent 70%             /* fade out by 70% of the width */
+    transparent 85%             /* fade out by 70% of the width */
   );
   opacity: .7;
 }
