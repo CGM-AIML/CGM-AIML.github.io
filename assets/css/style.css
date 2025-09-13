@@ -1,0 +1,14 @@
+/* Hide the theme’s auto header and footer */
+.page-header { display: none; }
+.site-footer { display: none; }
+
+/* Dark background + light text */
+html, body {
+  background-color: #0e1117;
+  color: #e6edf3;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Links styling */
+a { color: #4fc3f7; }
+a:hover { color: #80e1ff; }
