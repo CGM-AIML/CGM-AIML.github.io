@@ -16,6 +16,7 @@
 }
 
 /* ---------- Global ---------- */
+/* Body defaults */
 html, body{
   background: var(--bg);
   color: var(--text);
@@ -25,6 +26,21 @@ html, body{
   text-rendering: optimizeLegibility;
   margin: 0;
   padding: 0;
+}
+
+/* Corporate sleek headings */
+h1, h2{
+  font-family: "Plus Jakarta Sans", "Inter", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  font-weight: 700;          /* strong but not heavy */
+  line-height: 1.25;         /* tighter for headlines */
+  letter-spacing: 0.2px;     /* subtle precision */
+}
+
+/* Optional: other headings */
+h3, h4{
+  font-family: "Plus Jakarta Sans", "Inter", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  font-weight: 600;
+  line-height: 1.35;
 }
 
 /* Centered, card-like main content */
