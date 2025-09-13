@@ -7,10 +7,14 @@
 **AI/ML-Powered Industrial Leader**  
 Bridging reliability, automation, and AI/ML engineering
 
-**Email:** automationspecialist72@yahoo.com  
-**GitHub:** [github.com/CGM-AIML](https://github.com/CGM-AIML)  
-**ORCID:** [orcid.org/0009-0006-4627-6960](https://orcid.org/0009-0006-4627-6960)  
-**LinkedIn:** 
+<p class="hero-sub">AI/ML-Powered Industrial Leader • Reliability, Automation, Machine Learning</p>
+
+<div class="links-row">
+  <a class="badge" href="mailto:automationspecialist72@yahoo.com">Email</a>
+  <a class="badge" href="https://github.com/CGM-AIML">GitHub</a>
+  <a class="badge" href="https://orcid.org/0009-0006-4627-6960">ORCID</a>
+  <!-- Add LinkedIn when ready -->
+</div>
 
 ---
 
