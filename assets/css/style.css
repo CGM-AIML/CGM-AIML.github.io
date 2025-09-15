@@ -120,6 +120,23 @@ h3 { font-size: var(--h3); color: var(--accent-2); }
   padding: 16px 20px; border-top:1px solid var(--border);
   background: rgba(0,0,0,.15);
 }
+
+/* Section spacing inside cards */
+.card .card-body > * + h3 {            /* any h3 that follows another element */
+  margin-top: 18px;                    /* space above the next section title */
+}
+.card .card-body h3 {                  /* keep a tight bottom space under titles */
+  margin-bottom: 10px;
+}
+.card .card-body .skills {             /* add space after the tag “buttons” row */
+  margin-bottom: 12px;
+}
+.card .card-body ul {                  /* tidy list spacing inside cards */
+  margin-top: 6px;
+  margin-bottom: 0;
+  padding-left: 1.2rem;
+}
+
 /* Top accent line */
 .card::before {
   content:"";
