@@ -1,7 +1,7 @@
 /* =========================================================
-   Portfolio Theme – Dark + Gold
-   Author: You
-   Purpose: Drop-in CSS for a modern, accessible portfolio
+   Portfolio Theme – Dark and Gold
+   Author: Chris Gonzalez-Mejias
+   Purpose: Modern accessible portfolio
    ========================================================= */
 
 /* ---------- Global Reset & Base ---------- */
@@ -122,16 +122,16 @@ h3 { font-size: var(--h3); color: var(--accent-2); }
 }
 
 /* Section spacing inside cards */
-.card .card-body > * + h3 {            /* any h3 that follows another element */
-  margin-top: 18px;                    /* space above the next section title */
+.card .card-body > * + h3 {          
+  margin-top: 18px;                    
 }
-.card .card-body h3 {                  /* keep a tight bottom space under titles */
+.card .card-body h3 {                
   margin-bottom: 10px;
 }
-.card .card-body .skills {             /* add space after the tag “buttons” row */
+.card .card-body .skills {           
   margin-bottom: 12px;
 }
-.card .card-body ul {                  /* tidy list spacing inside cards */
+.card .card-body ul {                 
   margin-top: 6px;
   margin-bottom: 0;
   padding-left: 1.2rem;
@@ -192,7 +192,7 @@ h3 { font-size: var(--h3); color: var(--accent-2); }
 .hero .lead {
   color: var(--muted);
   max-width: 70ch;
-  margin-inline: auto; /* center the paragraph */
+  margin-inline: auto; 
 }
 .hero-content {
   display: flex;
@@ -308,7 +308,7 @@ img, video { max-width: 100%; height: auto; display:block; }
 figure { margin: 0; }
 figcaption { color: var(--muted); font-size: .9rem; margin-top: .4rem; }
 
-/* ---------- Animations (subtle) ---------- */
+/* ---------- Animations ---------- */
 @media (prefers-reduced-motion: no-preference) {
   .fade-in { animation: fade-in .6s ease both; }
   .rise { animation: rise .5s ease both; }
@@ -334,7 +334,7 @@ figcaption { color: var(--muted); font-size: .9rem; margin-top: .4rem; }
   .navbar { padding: 10px 0; }
 }
 
-/* ---------- Print (nice PDF export) ---------- */
+/* ---------- Print ( PDF export) ---------- */
 @media print {
   :root { --bg: #ffffff; --text:#111; --muted:#444; --accent:#222; --accent-2:#333; --border:#ddd; }
   body { background: #fff; color: #111; }
