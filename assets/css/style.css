@@ -108,13 +108,14 @@ h3 { font-size: var(--h3); color: var(--accent-2); }
 /* ---------- Cards ---------- */
 .card {
   position: relative;
+  display:flex; flex-direction:column;
   border-radius: var(--radius);
   background: linear-gradient(180deg, var(--panel), var(--panel-2));
   border: 1px solid var(--border);
   box-shadow: var(--shadow-2);
   overflow: hidden;
 }
-.card .card-body { padding: 20px; }
+.card .card-body { padding: 20px; flex: 1; }
 .card .card-footer {
   display:flex; align-items:center; gap:10px;
   padding: 16px 20px; border-top:1px solid var(--border);
@@ -208,6 +209,12 @@ h3 { font-size: var(--h3); color: var(--accent-2); }
   margin-top: 14px;
 }
 
+/* ---------- Hero Background (particles) ---------- */
+.hero { position: relative; overflow: hidden; }
+.hero-bg { position:absolute; inset:0; z-index:0; pointer-events:none; }
+.hero-bg canvas { width:100%; height:100%; display:block; filter: drop-shadow(0 0 12px rgba(201,169,106,.15)); opacity:.8; }
+.hero-content { position: relative; z-index: 1; }
+
 /* ---------- Sections ---------- */
 .section {
   padding: 56px 0;
@@ -225,6 +232,25 @@ h3 { font-size: var(--h3); color: var(--accent-2); }
 .project h3 { margin: 6px 0 0; }
 .project .meta { display:flex; flex-wrap:wrap; gap:8px; }
 .project .desc { color: var(--muted); margin: 6px 0 2px; }
+/* Progress step badge */
+.project-head { display:flex; align-items:baseline; justify-content:space-between; gap:10px; }
+.step-badge {
+  position:absolute; top:12px; right:12px;
+  display:flex; align-items:center; justify-content:center;
+  width: 40px; height: 40px;
+  border-radius: 50%;
+  font-size:1.25rem; font-weight:800;
+  color:#151515;
+  background: radial-gradient(circle at 30% 30%, var(--accent-2), var(--accent));
+  box-shadow: 0 0 12px rgba(201,169,106,.55);
+  border:1px solid rgba(0,0,0,.45);
+}
+/* Hackathon badge */
+.hack-badge { position:absolute; top:12px; right:12px; padding:.35rem .6rem; border-radius:999px; font-weight:600; font-size:.85rem; color:#151515; background: linear-gradient(180deg, var(--accent-2), var(--accent)); box-shadow: 0 6px 20px rgba(201,169,106,.25); border:1px solid rgba(0,0,0,.25); }
+.hack-badge .sub { font-weight:500; color:#2a2829; margin-left:.35rem; }
+/* place badge inline when inside footer */
+.card-footer .hack-badge { position: static; margin-left: auto; box-shadow: var(--shadow-1); }
+
 
 /* ---------- About ---------- */
 .about { display:grid; grid-template-columns: 1.1fr .9fr; gap: var(--gap); }
