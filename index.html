@@ -1,20 +1,16 @@
-/* =========================================================
-   Portfolio Index
-   Author: Chris Gonzalez-Mejias
-   Purpose: Modern accessible portfolio outline
-   ========================================================= */
 
 <!doctype html>
 <html lang="en">
 <head>
+  <!--============================================= Meta Tags =========================================-->
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <title>Christopher Gonzalez-Mejias – Portfolio</title>
 
   <!-- Favicon -->
-  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
-  <link rel="icon" href="/assets/favicon.ico">
+  <link rel="icon" href="https://cgm-aiml.github.io/assets/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="https://cgm-aiml.github.io/assets/favicon.ico">
 
   <!-- Canonical -->
   <link rel="canonical" href="https://cgm-aiml.github.io/">
@@ -23,7 +19,7 @@
   <meta name="description" content="AI/ML-powered industrial leader: reliability, automation, machine learning.">
   <meta name="theme-color" content="#121112" />
 
-  <!-- Open Graph (Facebook/LinkedIn/etc.) -->
+  <!-- Open Graph -->
   <meta property="og:title" content="Christopher Gonzalez-Mejias – Portfolio">
   <meta property="og:description" content="Reliability, automation, and machine learning projects and achievements.">
   <meta property="og:type" content="website">
@@ -43,10 +39,440 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700&display=swap" rel="stylesheet">
 
-  <!-- Theme CSS -->
-  <link rel="stylesheet" href="/assets/css/style.css">
+  <!--======================================== Embedded Theme CSS ======================================-->
+  <style>
+/* =========================================================
+   Portfolio Style
+   Author: Christopher Gonzalez-Mejias
+   Purpose: Modern accessible portfolio design
+   ========================================================= */
+
+/* ---------- Global Reset & Base ---------- */
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+html, body { height: 100%; }
+body {
+  margin: 0;
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  line-height: 1.6;
+  color: var(--text);
+  background: var(--bg);
+  padding-top: 70px;        
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ---------- Design Tokens ---------- */
+:root {
+  --bg:       #121112;
+  --panel:    #444243;
+  --panel-2:  #646263;
+  --text:     #e8e8e8;
+  --muted:    #b0b0b0;
+  --accent:   #9B773D;
+  --accent-2: #C9A96A;
+  --border:   #615545;
+
+  --success:  #60d394;
+  --warning:  #f1c40f;
+  --danger:   #ff6b6b;
+
+  --radius:   16px;
+  --shadow-1: 0 1px 2px rgba(0,0,0,.3);
+  --shadow-2: 0 6px 26px rgba(0,0,0,.35);
+
+  --max-w: 1120px;
+  --gap:   24px;
+  --pad:   24px;
+
+  --h1: clamp(2rem, 1.2rem + 2.5vw, 3.25rem);
+  --h2: clamp(1.5rem, 1rem + 1.6vw, 2.25rem);
+  --h3: clamp(1.25rem, 1rem + 1vw, 1.5rem);
+}
+
+/* ---------- Accessibility / Focus ---------- */
+:focus-visible {
+  outline: 2px solid var(--accent-2);
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
+/* ---------- Links ---------- */
+a { color: var(--accent); text-decoration: none; transition: color .2s ease, opacity .2s ease; }
+a:hover { color: var(--accent-2); }
+a.muted { color: var(--muted); }
+a.muted:hover { color: var(--text); }
+
+/* ---------- Headings ---------- */
+h1, h2, h3 { margin: 0 0 .5em; line-height: 1.2; letter-spacing: .2px; }
+h1 { font-size: var(--h1); }
+h2 { font-size: var(--h2); border-bottom: 1px solid var(--border); padding-bottom: .35em; }
+h3 { font-size: var(--h3); color: var(--accent-2); }
+
+/* ---------- Utilities ---------- */
+.container { width: min(100% - 2*var(--pad), var(--max-w)); margin-inline: auto; }
+.grid { display: grid; gap: var(--gap); }
+.grid-2 { grid-template-columns: repeat(2, minmax(0,1fr)); }
+.grid-3 { grid-template-columns: repeat(3, minmax(0,1fr)); }
+.stack { display: grid; gap: var(--gap); }
+.center { display:flex; align-items:center; justify-content:center; }
+.hidden { display: none !important; }
+.muted { color: var(--muted); }
+
+/* ---------- Buttons & Chips ---------- */
+.btn {
+  display:inline-flex; align-items:center; justify-content:center; gap:.5rem;
+  padding:.7rem 1rem; border-radius: calc(var(--radius) - 6px);
+  border:1px solid var(--border);
+  background: linear-gradient(180deg, #2a2829, #201f20);
+  color: var(--text); box-shadow: var(--shadow-1);
+  transition: transform .08s ease, box-shadow .2s ease, border-color .2s ease;
+  cursor: pointer; user-select: none; text-decoration: none;
+}
+.btn:hover {
+  border-color: var(--accent);
+  box-shadow: 0 4px 16px rgba(155, 119, 61, .25);
+}
+.btn:active { transform: translateY(1px); }
+.btn.gold {
+  background: linear-gradient(180deg, var(--accent), var(--accent-2));
+  color: #151515; border-color: transparent;
+}
+.btn.gold:hover { box-shadow: 0 6px 20px rgba(201, 169, 106, .3); }
+.btn .btn-icon { display:inline-block; width:20px; height:20px; }
+
+/* Mini-bot Help = circular ring button */
+.mini-bot #miniBtn{
+  width: 70px;               
+  height: 70px;
+  padding: 0;              
+  border-radius: 999px;  
+  background: transparent !important;     
+  border: 3px solid var(--accent-2);      
+  box-shadow: 0 0 0 2px rgba(0,0,0,.25) inset; 
+  color: inherit;
+  display: inline-grid; place-items: center; 
+}
+
+/* icon inside the ring */
+.mini-bot #miniBtn .btn-icon{
+  width: 60px;               
+  height: 60px;
+  border-radius: 13px;       
+  overflow: hidden;
+  -webkit-mask-image: -webkit-radial-gradient(white, black);
+}
+
+/* hover/focus polish */
+.mini-bot #miniBtn:hover{ border-color: var(--accent); }
+.mini-bot #miniBtn:focus-visible{
+  outline: 2px solid var(--accent-2);
+  outline-offset: 3px;
+}
+
+.tag{ display:inline-flex; align-items:center; gap:.4em; padding:.35rem .6rem; border:1px solid var(--border); border-radius:999px; color:var(--text); background:#1b1a1b; font-size:.85rem; }
+.tag--link{ border-color: var(--accent); box-shadow: 0 0 0 1px rgba(201,169,106,.2) inset; }
+.tag--link::after{ content:"↗"; margin-left:.45em; font-size:.9em; opacity:.85; }
+
+/* ---------- Cards ---------- */
+.card {
+  position: relative;
+  display:flex; flex-direction:column;
+  border-radius: var(--radius);
+  background: linear-gradient(180deg, var(--panel), var(--panel-2));
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-2);
+  overflow: hidden;
+}
+
+.card .card-body { padding: 20px; flex: 1; }
+.card .card-footer {
+  display:flex; align-items:center; gap:10px;
+  padding: 16px 20px; border-top:1px solid var(--border);
+  background: rgba(0,0,0,.15);
+}
+.card:hover { box-shadow: 0 10px 28px rgba(155,119,61,.25); transform: translateY(-2px); transition: box-shadow .3s ease, transform .2s ease; }
+.card::before {
+  content:"";
+  position:absolute; inset:0 0 auto 0; height:3px;
+  background: linear-gradient(90deg, transparent, var(--accent), var(--accent-2), transparent);
+  opacity:.8;
+}
+
+/* ---------- Header ---------- */
+.site-header { position: fixed; top: 0; left: 0; width: 100%; z-index: 100; backdrop-filter: blur(8px); background: rgba(18,17,18,.7); border-bottom: 1px solid #1d1c1d; }
+.navbar { display:flex; align-items:center; justify-content:space-between; gap: 14px; padding: 12px 0; }
+.brand { display:flex; align-items:center; gap:10px; font-weight:700; letter-spacing:.5px; font-family: "Plus Jakarta Sans", Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial; }
+.brand .dot { width: 10px; height: 10px; border-radius: 50%; background: radial-gradient(circle at 30% 30%, var(--accent-2), var(--accent)); box-shadow: 0 0 16px rgba(201,169,106,.5); }
+.nav { display:flex; align-items:center; gap: 14px; }
+.nav a { display:inline-block; padding:.4rem .7rem; border-radius: 999px; color: var(--muted); border:1px solid transparent; }
+.nav a:hover { color: var(--text); border-color: var(--border); background: rgba(255,255,255,.03); }
+
+/* ---------- Hero ---------- */
+.hero { padding: clamp(48px, 6vw, 96px) 0; display: flex; align-items: center; justify-content: center; text-align: center; position:relative; overflow:hidden; }
+.hero .lead { color: var(--muted); max-width: 70ch; margin-inline: auto; }
+.hero-content { display: flex; flex-direction: column; align-items: center; gap: 1rem; }
+.hero-buttons { display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; margin-top: 14px; }
+.hero-bg { position:absolute; inset:0; z-index:0; pointer-events:none; }
+.hero-bg canvas { width:100%; height:100%; display:block; filter: drop-shadow(0 0 12px rgba(201,169,106,.15)); opacity:.8; }
+.hero-content { position: relative; z-index: 1; }
+
+/* ---------- Sections ---------- */
+.section { padding: 56px 0; border-top: 1px solid #1d1c1d; }
+.section-header { display:flex; align-items:baseline; justify-content:space-between; gap: 12px; margin-bottom: 20px; }
+.section-actions { display:flex; gap:10px; }
+
+/* ---------- About ---------- */
+.about { display:grid; grid-template-columns: 1.1fr .9fr; gap: var(--gap); }
+.about .avatar { aspect-ratio: 1 / 1; border-radius: calc(var(--radius) - 6px); background: #1b1a1b; border:1px solid var(--border); }
+
+/* ---------- Center content inside ---------- */
+.card--center .card-body{ display:flex; align-items:center; justify-content:center; min-height:280px; }
+.about-copy{ max-width:60ch; text-align:center; margin-inline:auto; }
+
+/* ---------- Lightbox ---------- */
+.about .avatar .avatar-trigger{ all:unset; display:block; width:100%; height:100%; cursor:zoom-in; }
+.lightbox[hidden]{ display:none !important; }
+.lightbox{ position:fixed; inset:0; z-index:9999; display:grid; place-items:center; background:rgba(0,0,0,.6); backdrop-filter:blur(2px); }
+.lightbox-dialog{
+  position:relative;
+  width:min(92vw, 980px);
+  height:min(92vh, 820px);
+  margin:0 12px; border-radius:calc(var(--radius) - 2px);
+  box-shadow:var(--shadow-2); border:1px solid var(--border);
+  overflow:hidden; background:#000;
+}
+
+.lightbox-dialog img{ width:100%; height:100%; object-fit:contain; display:block; }
+.lightbox-dialog iframe, .lightbox-dialog embed, .lightbox-dialog object{
+  width:100%; height:100%; border:0; display:block;
+}
+
+.lightbox-close{ position:absolute; top:10px; right:10px; display:inline-grid; place-items:center; width:34px; height:34px; border-radius:999px; border:1px solid var(--border); background:linear-gradient(180deg,#2a2829,#201f20); color:var(--text); cursor:pointer; box-shadow:var(--shadow-1); }
+.lightbox-close:hover{ border-color: var(--accent); box-shadow:0 4px 16px rgba(155,119,61,.25); }
+@media (max-height: 700px) { .lightbox-dialog { width:min(92vw,880px); height:min(90vh,720px); } .lightbox-close{ top:6px; right:6px; } }
+
+/* ---------- Timeline ---------- */
+.timeline{ position: relative; padding-left: 80px; }
+.timeline::before{ content:""; position: absolute; left: 28px; top: 0; bottom: 0; width: 2px; background: linear-gradient(180deg, var(--accent), transparent); opacity: .5; }
+.timeline-item{ position: relative; margin-bottom: 22px; }
+.timeline-item::before{ content:""; position: absolute; left: -25px; top: .55rem; width: 12px; height: 12px; border-radius: 50%; background: var(--accent-2); box-shadow: 0 0 12px rgba(201,169,106,.5); }
+.timeline-item h3 { margin:0; }
+.timeline-item .where { color: var(--muted); font-size:.95rem; }
+.timeline-item .when { color: var(--muted); font-size:.85rem; }
+
+/* ---------- Project medallions ---------- */
+.step-badge{ position:absolute; top:12px; right:12px; display:flex; align-items:center; justify-content:center; width:40px; height:40px; border-radius:50%; font-size:1.25rem; font-weight:800; color:#151515; background: radial-gradient(circle at 30% 30%, var(--accent-2), var(--accent)); box-shadow:0 0 12px rgba(201,169,106,.55); border:1px solid rgba(0,0,0,.45); z-index:3; }
+.hack-badge{ position:absolute; top:12px; right:12px; padding:.35rem .6rem; border-radius:999px; font-weight:600; font-size:.85rem; color:#151515; background: linear-gradient(180deg, var(--accent-2), var(--accent)); box-shadow:0 6px 20px rgba(201,169,106,.25); border:1px solid rgba(0,0,0,.25); z-index:3; }
+.hack-badge .sub{ font-weight:500; color:#2a2829; margin-left:.35rem; }
+.card-footer .hack-badge{ position:static; margin-left:auto; box-shadow:var(--shadow-1); }
+
+/* ---------- Certifications list ---------- */
+.cert-list{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  justify-items: center;
+  align-items: center;
+  row-gap: 10px;
+  column-gap: 28px;
+  margin: 6px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.cert-item{ margin: 0; }
+.cert-item a{
+  display: inline-block;
+  text-align: center;
+  font-weight: 700;
+  line-height: 1.25;
+  color: var(--accent-2);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+}
+
+.cert-item a:hover{
+  color: var(--text);
+  border-bottom-color: var(--accent);
+}
+
+/* ---------- PDF badge ---------- */
+.badge{
+  display:inline-flex; align-items:center; justify-content:center;
+  padding:.15rem .55rem; border:1px solid var(--accent-2); border-radius:8px;
+  font-size:.72rem; font-weight:800; letter-spacing:.02em; color:#151515;
+  background: linear-gradient(180deg, var(--accent-2), var(--accent));
+  box-shadow: 0 0 8px rgba(201,169,106,.25);
+}
+.badge--pdf::after { content: " ↗"; font-size: .85em; opacity: .85; }
+.badge--corner{ position:absolute; right:16px; bottom:16px; z-index:2; }
+
+/* ---------- Gold "regal" honor tiles ---------- */
+.card--honor{
+  background: linear-gradient(180deg, #C9A96A, #9B773D);
+  border-color: #8B6A3A;
+  color: #151515;
+}
+
+.card--honor::before{
+  background: linear-gradient(90deg, transparent, rgba(0,0,0,.25), rgba(0,0,0,.35), transparent);
+  opacity: .6;
+}
+
+.card--honor .muted{ color: #2a2a2a; }
+.card--honor a{ color:#151515; border-bottom:1px solid transparent; }
+.card--honor a:hover{ color:#222; border-bottom-color:#222; }
+.card--honor:hover{ box-shadow: 0 10px 28px rgba(155,119,61,.35); }
+
+.card--honor .card-body{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  min-height: 120px;
+  padding-block: 0px;
+}
+
+.card--honor .card-body strong{
+  font-size: 1.35rem;
+  letter-spacing: .01em;
+}
+
+.card--honor .card-body .muted{
+  margin-top: 0px;
+  font-size: 1.35rem;
+  opacity: .95;
+}
+
+/* ---------- Medallion-in-card ---------- */
+.card--honor.honor-badge{ background: transparent; border:0; box-shadow:none; padding-bottom:22px; }
+.card--honor.honor-badge .card-body{ position:relative; min-height:220px; text-align:center; }
+.card--honor.honor-badge img{
+  width:240px; height:auto; max-width:60vw; display:block; margin:0 auto;
+  image-rendering:-webkit-optimize-contrast; image-rendering:crisp-edges;
+  filter:drop-shadow(0 12px 28px rgba(0,0,0,.45));
+}
+
+.card--honor.honor-badge .banner{
+  position:absolute; left:50%; bottom:0; transform:translate(-50%, 20%);
+  padding:.4rem .9rem; border-radius:12px;
+  background:linear-gradient(180deg,#F7E39D,#E3C16A 40%,#C79B49 70%,#9A6F33);
+  color:#1b1406; font-weight:900; letter-spacing:.06em; border:1px solid #8D6A33;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.6), inset 0 -6px 12px rgba(0,0,0,.28), 0 8px 20px rgba(0,0,0,.35);
+  white-space:nowrap;
+}
+
+.card--honor.honor-badge:hover{ transform:translateY(-2px) scale(1.015); filter:drop-shadow(0 14px 36px rgba(201,169,106,.25)); }
+.card--honor.honor-badge a{ color:inherit; text-decoration:none; display:block; outline:none; }
+.card--honor.honor-badge a:focus-visible{ outline:2px solid rgba(201,169,106,.85); outline-offset:6px; border-radius:14px; }
+
+/* ---------- Mini Concierge ---------- */
+.mini-bot{position:fixed; right:18px; bottom:18px; z-index:9999}
+.mini-bot .btn{border-radius:999px; padding:.7rem 1rem}
+.mini-panel{
+  position:fixed; right:18px; bottom:100px; width:min(92vw, 360px);
+  max-height:70vh; background:#1b1a1b; border:1px solid var(--border);
+  border-radius:16px; box-shadow:0 12px 28px rgba(0,0,0,.45);
+  display:none; overflow:hidden;
+}
+
+.mini-panel.show{display:block}
+.mini-head{display:flex; align-items:center; justify-content:space-between;
+  gap:.5rem; padding:.7rem 1rem; border-bottom:1px solid var(--border); font-weight:700}
+.mini-body{padding:.8rem 1rem; display:grid; gap:.6rem; max-height:40vh; overflow:auto}
+.mini-foot{display:grid; gap:.5rem; padding:.8rem 1rem; border-top:1px solid var(--border)}
+.mini-foot input, .mini-foot textarea{
+  width:100%; background:#121112; border:1px solid var(--border);
+  border-radius:10px; padding:.65rem .75rem; color:var(--text);
+}
+
+.mini-foot input::placeholder, .mini-foot textarea::placeholder{ color:var(--muted); }
+.mini-foot textarea{min-height:84px; resize:vertical}
+.mini-actions{display:flex; gap:.5rem; flex-wrap:wrap}
+.mini-row{display:flex; gap:.5rem}
+.mini-row .btn{flex:1}
+.mini-note{font-size:.8rem; color:var(--muted)}
+
+/* ---------- Footer ---------- */
+.site-footer { display: none !important; }
+.footer { border-top: 1px solid #1d1c1d; padding: 26px 0 36px; color: var(--muted); }
+.footer .row { display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap: 10px; }
+.footer .social { display:flex; gap: 10px; }
+
+/* ---------- Tables ---------- */
+.table { width:100%; border-collapse: collapse; border:1px solid var(--border); border-radius: var(--radius); overflow: hidden; }
+.table th, .table td { padding: .8rem 1rem; border-bottom:1px solid var(--border); }
+.table thead th { background: #1b1a1b; color: #1a1a1a; text-align:left; }
+
+/* ---------- Code / Pre ---------- */
+code, pre { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; }
+pre { background: #1b1a1b; color: var(--text); border: 1px solid var(--border); border-radius: calc(var(--radius) - 8px); padding: 1rem; overflow: auto; }
+
+/* ---------- Animations ---------- */
+@media (prefers-reduced-motion: no-preference) {
+  .fade-in { animation: fade-in .6s ease both; }
+  .rise { animation: rise .5s ease both; }
+}
+
+@keyframes fade-in { from { opacity:0 } to { opacity:1 } }
+@keyframes rise { from { opacity:0; transform: translateY(8px) } to { opacity:1; transform: none } }
+
+/* ---------- Responsive ---------- */
+@media (max-width: 1024px) { .grid-3 { grid-template-columns: repeat(2, minmax(0,1fr)); } .about { grid-template-columns: 1fr; } }
+@media (max-width: 680px) {
+  body { padding-top: calc(64px + env(safe-area-inset-top)); }
+  .nav { display:none; }
+  .grid-2, .grid-3 { grid-template-columns: 1fr; }
+  :root { --pad: 18px; --gap: 18px; }
+  .section { padding: 42px 0; }
+  .navbar { padding: 10px 0; }
+}
+
+/* ---------- Print ---------- */
+@media print {
+  :root { --bg: #ffffff; --text:#111; --muted:#444; --accent:#222; --accent-2:#333; --border:#ddd; }
+  body { background: #fff; color: #111; }
+  .site-header, .footer { display:none; }
+  a { color: #111; text-decoration: underline; }
+  .card, .table, pre, input, textarea, select {
+    box-shadow: none !important;
+    border-color: #ccc !important;
+    background: #fff !important;
+    color: #111 !important;
+  }
+}
+
+/* ---------- Anti-save deterrents (cosmetic) ---------- */
+img, a img { -webkit-user-drag: none; user-select: none; pointer-events: none; }
+
+/* ---------- Optional Light Mode Override ---------- */
+html[data-theme="light"] {
+  --bg: #f8f8f8; --panel: #ffffff; --panel-2: #f3f3f3; --text: #1a1a1a; --muted: #4d4d4d; --accent: #7a5b26; --accent-2: #a37f3b; --border: #e2e2e2;
+  background: var(--bg);
+}
+
+/* ---------- Spinner ---------- */
+#lbSpinner{
+  position:absolute; inset:0; display:none; place-items:center;
+  background: rgba(0,0,0,.15);
+}
+
+#lbSpinner::after{
+  content:""; width:36px; height:36px; border-radius:50%;
+  border:3px solid rgba(255,255,255,.35); border-top-color:#C9A96A;
+  animation: lbspin .8s linear infinite;
+}
+
+@keyframes lbspin{ to { transform: rotate(360deg); } }
+.lightbox.loading .lightbox-dialog{ cursor: progress; }
+.lightbox.loading #lbSpinner{ display:grid; 
+}
+
+  </style>
 </head>
 <body>
+  <!--=============================================== HTML ============================================-->
   <!-- HEADER / NAV -->
   <header class="site-header">
     <div class="container navbar">
@@ -56,74 +482,232 @@
       </div>
       <nav class="nav" aria-label="Primary Navigation">
         <a href="#about">About</a>
+        <a href="#certs">Certifications</a>
+        <a href="#education">Education</a>
         <a href="#aiml">AI/ML Projects</a>
         <a href="#industrial">Industrial</a>
         <a href="#honors">Honors</a>
-        <a href="#contact">Contact</a>
+        <a href="#resume">Resume</a>
       </nav>
     </div>
   </header>
 
+      <!-- Disable context menu & drag (cosmetic only) -->
+    <script>
+      document.addEventListener('contextmenu', e => e.preventDefault(), {capture:true});
+      document.addEventListener('dragstart',  e => e.preventDefault(), {capture:true});
+    </script>
+
   <!-- HERO -->
   <section class="hero">
+    <div class="hero-bg" aria-hidden="true"><canvas id="heroParticles"></canvas></div>
     <div class="container hero-content">
       <h1 class="fade-in">AI/ML-Powered Industrial Leader</h1>
       <p class="lead">Reliability • Automation • Machine Learning</p>
       <div class="hero-buttons">
-        <a class="btn gold" href="mailto:automationspecialist72@yahoo.com">Email</a>
-        <a class="btn" href="https://github.com/CGM-AIML" target="_blank" rel="noopener noreferrer">GitHub</a>
-        <a class="btn" href="https://orcid.org/0009-0006-4627-6960" target="_blank" rel="noopener noreferrer">ORCID</a>
-        <a class="btn" href="#resume">Resume (PDF)</a>
+        <!-- <a class="btn gold" href="mailto:automationspecialist72@yahoo.com">Email</a> -->
+
+        <a class="btn gold " href="https://github.com/CGM-AIML" target="_blank" rel="noopener noreferrer">
+          <!-- GitHub mark -->
+          <svg viewBox="0 0 16 16" width="30" height="30" aria-hidden="true" fill="currentColor">
+            <path d="M8 .2A7.8 7.8 0 0 0 .2 8.1c0 3.46 2.24 6.39 5.35 7.42.39.07.53-.17.53-.37
+                    0-.18-.01-.77-.01-1.39-2.18.47-2.64-.93-2.64-.93-.36-.92-.89-1.17-.89-1.17-.73-.5.06-.49.06-.49.81.06 1.24.83 1.24.83.72 1.24
+                    1.9.88 2.36.67.07-.52.28-.88.51-1.08-1.74-.2-3.58-.87-3.58-3.88 0-.86.31-1.56.83-2.11-.08-.2-.36-1.01.08-2.11 0 0 .66-.21
+                    2.17.81.63-.18 1.3-.27 1.98-.27.67 0 1.35.09 1.98.27 1.51-1.02 2.17-.81 2.17-.81.44 1.1.16 1.91.08 2.11.52.55.83 1.25.83
+                    2.11 0 3.02-1.84 3.68-3.59 3.87.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .2.14.45.54.37A7.82 7.82 0 0 0 15.8 8.1
+                    7.8 7.8 0 0 0 8 .2Z"/>
+          </svg>
+        <strong> GitHub </strong>
+        </a>
+
+        <a class="btn gold" href="https://orcid.org/0009-0006-4627-6960" target="_blank" rel="noopener noreferrer">
+          <!-- ORCID logo -->
+          <svg viewBox="0 0 256 256" width="30" height="30" aria-hidden="true" fill="currentColor">
+            <path d="M128 0a128 128 0 1 0 0 256 128 128 0 0 0 0-256Zm-34.8 64.6h17.6v126.7H93.2V64.6Zm47.6 28.7h35.9c23.7 0 38.2 15.2 38.2 38.1
+                    0 22.5-14.5 37.4-38.4 37.4h-20.3v22.5h-15.4V93.3Zm15.4 14.7v46.4h19.7c14.9 0 23.6-8 23.6-23.1 0-15.4-8.5-23.3-23.3-23.3h-20Z"/>
+          </svg>
+          <strong> ORCID </strong>
+        </a>
       </div>
-    </div>
+
   </section>
 
   <!-- ABOUT -->
   <section id="about" class="section">
     <div class="container about">
-      <div class="card rise">
+      <div class="card rise card--center">
         <div class="card-body">
-          <h2>About Me</h2>
-          <p class="muted">
-            Industrial systems leader transitioning into AI/ML engineering. Proven track record in automation, controls,
-            and reliability across injection and blow-molding operations, managing multimillion-dollar revitalization
-            projects and leading cross-functional teams. Currently advancing in machine learning and MLOps through the
-            UT Austin / Great Learning Post Graduate Program in AI &amp; ML. Recognized with Mortar Board and Tri-Alpha
-            honors for academic excellence.
-          </p>
-
-          <!-- ===== CERTIFICATIONS ===== -->
-          <h3>Certifications</h3>
-          <div class="skills">
-            <a class="tag" href="/assets/docs/Learning_PLC_Ladder_Logic_2023_CGM.pdf" target="_blank" rel="noopener">PLC Ladder Logic</a>
-            <a class="tag" href="/assets/docs/CertificateOfCompletion_Learning_SQL_Programming_CGM_2023.pdf" target="_blank" rel="noopener">SQL Programming</a>
-            <a class="tag" href="/assets/docs/Basics_of_Cisco_Networking_Christopher_Gonzalez-Mejias_2025.pdf" target="_blank" rel="noopener">Cisco Networking Basics</a>
-            <a class="tag" href="/assets/docs/Better_Processing_School_Christopher_Gonzalez-Mejias_Cert-Signed_2023.pdf" target="_blank" rel="noopener">Food Safety</a>
-            <a class="tag" href="/assets/docs/SimuTech_Troubleshooting_Electrical_Circuits_2022_CGM.pdf" target="_blank" rel="noopener">Electrical Troubleshooting</a>
-            <a class="tag" href="/assets/docs/ACR_Safety_R410A_Chris_Gonzalez-Mejias_2019.pdf" target="_blank" rel="noopener">R-410A Safety</a>
-            <a class="tag" href="/assets/docs/FLL_Certificate_of_Achievement_CGM_2025.pdf" target="_blank" rel="noopener">Front Line Leadership</a>
-            <a class="tag" href="/assets/docs/Stop_The_Bleed_C_Gonzalez-Mejias.pdf" target="_blank" rel="noopener">Stop the Bleed</a>
-            <a class="tag" href="/assets/docs/Gonzalez-Mejias_Christopher_Deans_Honor_Roll_2023-2024.pdf" target="_blank" rel="noopener">Dean’s Honor Roll</a>
-            <a class="tag" href="/assets/docs/Python_Foundations_Christopher_Gonzalez-Mejias.pdf" target="_blank" rel="noopener">Python Foundations</a>
+          <div class="about-copy">
+            <h2>About Me</h2>
+            <p class="muted">
+              I’m an industrial reliability leader turning AI/ML engineer, building systems that keep machines, teams, and businesses performing at their best. I’ve led maintenance and automation through capital turnarounds, 
+              OEE improvement, and predictive maintenance—integrating PLCs, SCADA, robotics, and data-driven troubleshooting to cut downtime and lift throughput. Recently I overseen multimillion-dollar expansions while mentoring 
+              technicians and standardizing SOPs, spares strategy, and RCA/CAPA. To formalize the data side, I’m completing UT Austin’s Program in AI/ML with hands-on work in Python, EDA, supervised learning, ensembles, and deployment—so 
+              models don’t stay in notebooks; they ship and create real measurable impact. Portfolio projects include end-to-end pipelines (EDA → features → cross-validation → calibration) for visa/loan approval, churn, and reliability 
+              analyses. Fusing MLOps with operations—predictive maintenance, quality intelligence, and AI-augmented automation—owning data collection, modeling, deployment, monitoring, and continuous improvement.
+            </p>
           </div>
-
-          <h3>Education &amp; Continued Learning</h3>
-          <ul>
-            <li>
-              <strong>Post Graduate Program in AI &amp; ML: Business Applications (2025–2026)</strong> – UT Austin / Great Learning
-              <em>(in progress)</em>
-            </li>
-            <li>
-              <strong>A.S., Industrial Sciences – Advanced Systems Technology (2025)</strong> – Washburn University —
-              <em>Dean’s Honor Roll, Mortar Board, Tri-Alpha</em>
-            </li>
-          </ul>
         </div>
       </div>
 
-      <div class="avatar card rise" aria-hidden="true"></div>
+      <div class="avatar card rise">
+        <button class="avatar-trigger" aria-label="View larger photo">
+          <img
+            src="https://raw.githubusercontent.com/CGM-AIML/CGM-AIML.github.io/main/assets/img/Placeholder.jpg"
+            alt="Christopher Gonzalez-Mejias headshot"
+            width="1200" height="1500"
+            loading="lazy" decoding="async"
+            style="width:100%;height:120%;object-fit:cover;display:block;"
+          >
+        </button>
+      </div>
     </div>
   </section>
+
+  <!-- CREDENTIALS -->
+    <section id="credentials" class="section">
+      <div class="container stack">
+        <!-- Certifications -->
+        <h2 id="certs">Certifications</h2>
+        <article class="card rise">
+          <div class="card-body">
+            <div class="cert-subnote">
+            </div>
+            <ul class="cert-list">
+              <li class="cert-item">
+                <a href="#!"
+                  onclick="openLightbox('https://cgm-aiml.github.io/assets/img/FLL Certificate of Achievement - Christopher Gonzalez-Mejias_1.jpg','Front Line Leadership'); return false;">
+                  Front Line Leadership
+                </a>
+              </li>
+              <li class="cert-item">
+                <a href="#!"
+                  onclick="openLightbox('https://cgm-aiml.github.io/assets/img/Python Foundations Christopher Gonzalez-Mejias_1.jpg','Python Foundations'); return false;">
+                  Python Foundations
+                </a>
+              </li>
+              <li class="cert-item">
+                <a href="#!"
+                  onclick="openLightbox('https://cgm-aiml.github.io/assets/img/Better Processing School_Christopher Gonzalez-Mejias_Cert-Signed 2023_1.jpg','Food Safety'); return false;">
+                  Food Safety
+                </a>
+              </li>
+              <li class="cert-item">
+                <a href="#!"
+                  onclick="openLightbox('https://cgm-aiml.github.io/assets/img/Stop The Bleed C Gonzalez-Mejias_1.jpg','Stop the Bleed'); return false;">
+                  Stop the Bleed
+                </a>
+              </li>
+              <li class="cert-item">
+                <a href="#!"
+                  onclick="openLightbox('https://cgm-aiml.github.io/assets/img/AC&R Safety Coalition R-410A Chris Gonzalez-Mejias 2019_1.jpg','R-410A Safety'); return false;">
+                  R-410A Safety
+                </a>
+              </li>
+              <li class="cert-item">
+                <a href="#!"
+                  onclick="openLightbox('https://cgm-aiml.github.io/assets/img/SimuTech Multimedia Troubleshooting Electrical Circuits 2022 CGM_1.jpg','Electrical Troubleshooting'); return false;">
+                  Electrical Troubleshooting
+                </a>
+              </li>
+              <li class="cert-item">
+                <a href="#!"
+                  onclick="openLightbox('https://cgm-aiml.github.io/assets/img/Basics of Cisco Networking Christopher Gonzalez-Mejias 2025_1.jpg','Cisco Networking Basics'); return false;">
+                  Cisco Networking Basics
+                </a>
+              </li>
+              <li class="cert-item">
+                <a href="#!"
+                  onclick="openLightbox('https://cgm-aiml.github.io/assets/img/CertificateOfCompletion_Learning SQL Programming CGM 2023_1.jpg','SQL Programming'); return false;">
+                  SQL Programming
+                </a>
+              </li>
+              <li class="cert-item">
+                <a href="#!"
+                  onclick="openLightbox('https://cgm-aiml.github.io/assets/img/Learning PLC Ladder Logic 2023 CGM_1.jpg','PLC Ladder Logic'); return false;">
+                  PLC Ladder Logic
+                </a>
+              </li>
+            </ul>
+
+          </div>
+        </article>
+
+
+  <!-- Education -->
+    <h2 id="education">Education &amp; Continued Learning</h2>
+    <article class="card rise">
+      <div class="card-body">
+        <ul>
+          <li>
+            <strong>Post Graduate Program in AI &amp; ML: Business Applications (Expected April 2026)</strong> — UT Austin McCombs School of Business
+            <em> · GPA 4.33</em>
+            <div class="muted">
+              Mentor-led program covering Python foundations, ML/DL,
+              Computer Vision, NLP &amp; Generative AI (incl. RAG) with 7 hands-on projects focused on business impact.
+            </div>
+          </li>
+
+          <!-- A.S. -->
+          <li>
+            <a href="#!"
+              onclick="openLightbox('https://cgm-aiml.github.io/assets/img/Associates_of_Science_Christopher_Gonzalez-Mejias_1.jpg','A.S., Industrial Sciences – Advanced Systems Technology (May 2025)'); return false;"
+              aria-label="A.S., Industrial Sciences – Advanced Systems Technology (May 2025) — preview image">
+              <strong>A.S., Industrial Sciences – Advanced Systems Technology (May 2025)</strong>
+            </a> — Washburn University
+            <em> · GPA 3.6</em>
+            <div class="muted">
+              Blending a classical general-education foundation with applied industrial systems. 
+              Core in math/science &amp; composition, plus leadership/management electives; concentration work across 
+              automation/controls (PLCs &amp; process control), robotics/mechatronics, fluid power, and mechanical systems.
+            </div>
+          </li>
+
+          <!-- Building Automation Systems -->
+          <li>
+            <a href="#!"
+              onclick="openLightbox('https://cgm-aiml.github.io/assets/img/Building_Automation_Systems_Christopher_Gonzalez-Mejias_1.jpg','Building Automation Systems (May 2019)'); return false;"
+              aria-label="Building Automation Systems (May 2019) — preview image">
+              <strong>Building Automation Systems (May 2019)</strong> 
+            </a>  — Washburn Institute of Technology
+            <em> · GPA 3.0</em>
+            <div class="muted">
+              One of two in the first cohort of this newly accredited program combining AST, CCNA training, and HVAC. Training across
+              electrical, heating/cooling, and sheet-metal fabrication with credentials in refrigerant control/handling and
+              industry tool usage.
+            </div>
+          </li>
+
+          <!-- Advanced System Technology -->
+          <li>
+            <a href="#!"
+              onclick="openLightbox('https://cgm-aiml.github.io/assets/img/Advance_Systems_Technology_Christopher_Gonzalez-Mejias_1.jpg','Advanced System Technology (May 2018)'); return false;"
+              aria-label="Advanced System Technology (May 2018) — preview image">
+              <strong>Advanced System Technology (May 2018)</strong> 
+            </a> — Washburn Institute of Technology
+            <em> · GPA 3.5</em>
+            <div class="muted">
+              Maintenance and systems fundamentals with coursework in electrical, mechanical, and fluid systems; focus on PLCs,
+              process control, robotics, mechatronics, and mill/lathe training.
+            </div>
+          </li>
+
+          <!-- Welding Certification -->
+          <li>
+            <a href="#!"
+              onclick="openLightbox('https://cgm-aiml.github.io/assets/img/Welding_Cert_A_Christopher_Gonzalez-Mejias_1.jpg','Welding Certification (Dec 2015)'); return false;"
+              aria-label="Welding Certification (Dec 2015) — preview image">
+              <strong>Welding Certification (Dec 2015)</strong>
+            </a> — Washburn Institute of Technology
+            <em> · GPA 3.0</em>
+            <div class="muted">
+              Fundamentals in welding techniques including blueprint reading; stick, MIG, TIG; oxy-fuel cutting; and metallurgy.
+            </div>
+          </li>
+        </ul>
+      </div>
+    </article>
+
 
   <!-- AI/ML PROJECTS -->
   <section id="aiml" class="section">
@@ -131,7 +715,18 @@
       <div class="section-header">
         <h2>AI/ML Projects</h2>
         <div class="section-actions">
-          <a class="btn" href="https://github.com/CGM-AIML" target="_blank" rel="noopener">View GitHub</a>
+          <a class="btn gold " href="https://github.com/CGM-AIML" target="_blank" rel="noopener noreferrer">
+          <!-- GitHub mark -->
+          <svg viewBox="0 0 16 16" width="30" height="30" aria-hidden="true" fill="currentColor">
+            <path d="M8 .2A7.8 7.8 0 0 0 .2 8.1c0 3.46 2.24 6.39 5.35 7.42.39.07.53-.17.53-.37
+                    0-.18-.01-.77-.01-1.39-2.18.47-2.64-.93-2.64-.93-.36-.92-.89-1.17-.89-1.17-.73-.5.06-.49.06-.49.81.06 1.24.83 1.24.83.72 1.24
+                    1.9.88 2.36.67.07-.52.28-.88.51-1.08-1.74-.2-3.58-.87-3.58-3.88 0-.86.31-1.56.83-2.11-.08-.2-.36-1.01.08-2.11 0 0 .66-.21
+                    2.17.81.63-.18 1.3-.27 1.98-.27.67 0 1.35.09 1.98.27 1.51-1.02 2.17-.81 2.17-.81.44 1.1.16 1.91.08 2.11.52.55.83 1.25.83
+                    2.11 0 3.02-1.84 3.68-3.59 3.87.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .2.14.45.54.37A7.82 7.82 0 0 0 15.8 8.1
+                    7.8 7.8 0 0 0 8 .2Z"/>
+          </svg>
+          <STRONG> Github </STRONG>
+        </a>
         </div>
       </div>
 
@@ -139,131 +734,318 @@
         <article class="card">
           <div class="thumb"></div>
           <div class="card-body">
-            <h3>Exploratory Data Analysis (FoodHub)</h3>
-            <p class="desc">Customer retention insights through data cleaning, visualization, and EDA.</p>
+            <div class="project-head">
+              <h3>Exploratory Data Analysis (FoodHub)</h3>
+              <span class="step-badge">1</span>
+            </div>
+            <p class="desc">Ran a straight-shooting EDA on restaurant features to figure out what actually moves repeat business. Cleaned messy categories, standardized cuisines and locations, handled nulls, and mapped demand patterns.</p>
             <div class="meta">
-              <span class="tag">Python</span>
-              <span class="tag">Pandas</span>
-              <span class="tag">Matplotlib</span>
+              <span class="tag">Python</span><span class="tag">NumPy</span><span class="tag">Pandas</span><span class="tag">Seaborn</span>
+              <span class="tag">Exploratory Data Analysis</span><span class="tag">Matplotlib</span>
+              <span class="tag">Bivariate Analysis</span><span class="tag">Univariate Analysis</span>
+              <span class="tag">Business Recommendations</span>
             </div>
           </div>
           <div class="card-footer">
-            <a class="btn" href="https://github.com/CGM-AIML/Exploratory-Data-Analysis" target="_blank" rel="noopener">Repo</a>
+            <a class="btn gold" href="https://github.com/CGM-AIML/Exploratory-Data-Analysis" target="_blank" rel="noopener"><strong>Repo</strong></a>
           </div>
         </article>
 
         <article class="card">
           <div class="thumb"></div>
           <div class="card-body">
-            <h3>ML Modeling (AllLife Bank)</h3>
-            <p class="desc">Full ML pipeline: data preparation, feature engineering, training, tuning, ROC-AUC evaluation.</p>
+            <div class="project-head">
+              <h3>ML Modeling (AllLife Bank)</h3>
+              <span class="step-badge">2</span>
+            </div>
+            <p class="desc">Built an explainable pipeline to spot high-propensity loan prospects. EDA → encoding/imputation → Decision Tree with CV tuning, optimized for business lift and thresholded for top deciles with reasons-why.</p>
             <div class="meta">
-              <span class="tag">Scikit-learn</span>
-              <span class="tag">EDA</span>
-              <span class="tag">ROC-AUC</span>
+              <span class="tag">Scikit-learn</span><span class="tag">EDA</span><span class="tag">Data Pre-processing</span>
+              <span class="tag">Decision Tree</span><span class="tag">Cross-Validation</span><span class="tag">ROC-AUC</span>
+              <span class="tag">Model Performance</span><span class="tag">Business Recommendations</span>
             </div>
           </div>
           <div class="card-footer">
-            <a class="btn" href="https://github.com/CGM-AIML/ML-Modeling" target="_blank" rel="noopener">Repo</a>
+            <a class="btn gold" href="https://github.com/CGM-AIML/ML-Modeling" target="_blank" rel="noopener"><strong>Repo</strong></a>
           </div>
         </article>
+
+            <article class="card">
+      <div class="thumb" style="background: radial-gradient(1200px 400px at -10% -20%, rgba(201,169,106,.22), transparent 60%), linear-gradient(180deg, #3a3839, #2a292a);"></div>
+      <div class="card-body">
+        <div class="project-head">
+          <h3>Restaurant Turnover Prediction — Hackathon</h3>
+          <span class="step-badge">3</span>
+        </div>
+        <p class="desc">My debut ML hackathon (Great Learning PGP AI/ML). Built regression pipelines and feature cleaning to predict annual restaurant turnover. Finished <strong>Top 5</strong> among 218 solo contestants.</p>
+        <div class="meta">
+          <span class="tag">RMSE: 12,018,652</span>
+          <span class="tag">Regression</span>
+          <span class="tag">XGBoost/CatBoost</span>
+          <span class="tag">Cross-Validation</span>
+        </div>
+      </div>
+      <div class="card-footer">
+        <a class="btn gold" href="https://github.com/CGM-AIML/Restaurant-Turnover-Hackathon" target="_blank" rel="noopener"><strong>Repo</strong></a>
+        <span class="hack-badge" aria-label="Rank 5 of 218">🏆 Rank #5 <span class="sub">/218</span></span>
+      </div>
+    </article>
       </div>
     </div>
   </section>
 
-  <!-- INDUSTRIAL PROJECTS -->
-  <section id="industrial" class="section">
-    <div class="container">
-      <h2>Industrial Projects</h2>
-      <div class="timeline">
-        <div class="timeline-item">
-          <h3>Hill’s Pet Nutrition – S.M.A.R.T. Factory <span class="when">(2023)</span></h3>
-          <div class="where">Startup team member for Hill’s first digital-first S.M.A.R.T. Factory.</div>
-          <p class="muted">
-            FAT/sFAT, I/O checks, PLC/HMI commissioning, AGVs, AMRs, vision systems. Featured by Gray Solutions:
-            <a href="https://www.gray.com/projects/hills-pet-nutrition/" target="_blank" rel="noopener">Case Study</a>.
-          </p>
-        </div>
-        <div class="timeline-item">
-          <h3>Mauser Packaging – $11M Revitalization <span class="when">(2024–Present)</span></h3>
-          <div class="where">Leading turnaround initiatives and predictive maintenance programs.</div>
-        </div>
-        <div class="timeline-item">
-          <h3>Delta Designs – Museum Storage Fabrication <span class="when">(2016–2017)</span></h3>
-          <div class="where">
-            Fabricated conservation-grade cabinetry for KU, Smithsonian, Perot.
-            <a href="https://www.deltadesignsltd.com/our-products/" target="_blank" rel="noopener">Delta Designs</a>.
+      <!-- INDUSTRIAL PROJECTS -->
+    <section id="industrial" class="section">
+      <div class="container">
+        <h2>Industrial Projects</h2>
+        <div class="timeline">
+
+          <div class="timeline-item">
+            <h3>
+              <a href="#!"
+                onclick="openLightbox('https://cgm-aiml.github.io/assets/img/industrial/mauser_packaging_revitalization_1.jpg','Mauser Packaging – $11M Revitalization'); return false;"
+                aria-label="Preview image — Mauser Packaging – $11M Revitalization">
+                Mauser Packaging – $11M Revitalization
+              </a>
+              <span class="when">(2023–Present)</span>
+            </h3>
+            <div class="where">Plant turnaround leadership across maintenance, operations cadence, and predictive reliability.</div>
+            <ul>
+              <li><strong>Turnaround & cadence:</strong> Daily XFN stand-ups, KPI boards, structured labor planning; coordinated vendors/contractors and outage windows.</li>
+              <li><strong>Reliability program:</strong> PdM stack (vibration, oil analysis, thermography) + CMMS discipline (MTBF/MTTR); optimized <em>Atlas Copco G160 VSD</em> compressor pair master–slave.</li>
+              <li><strong>Utilities & process:</strong> Rehabbed injection & blow-mold chilled water + sand filtration; tightened ORP/PPM controls and SOPs after floor-scrubber contamination excursion.</li>
+              <li><strong>IML support:</strong> Restored controls/HMI/vision reliability on Campetella robot cells; eliminated chronic defects and improved startup consistency.</li>
+              <li><strong>Critical Spares Room:</strong> Secured, zoned layout; 1-ft² grid, 36″ aisles, machine sub-zones, checkout workstation, Excel mapping.</li>
+              <li><strong>Budgets & capital:</strong> Managed IOs/AFEs, aligned justifications, tracked M/Q/Y performance vs plan.</li>
+              <li><strong>Safety & SOPs:</strong> 5-Why/RCA investigations, lock-step SOPs, city/corporate reporting; training modules for FTR PM & startup.</li>
+              <li><strong>Data & dashboards:</strong> Live Excel/Teams dashboards for labor/spend/KPIs; SCADA/Andon roadmap.</li>
+            </ul>
           </div>
+
+          <div class="timeline-item">
+            <h3>
+              <a href="#!"
+                onclick="openLightbox('https://cgm-aiml.github.io/assets/img/industrial/hills_smart_factory_1.jpg','Hill’s Pet Nutrition – S.M.A.R.T. Factory'); return false;"
+                aria-label="Preview image — Hill’s Pet Nutrition – S.M.A.R.T. Factory">
+                Hill’s Pet Nutrition – S.M.A.R.T. Factory
+              </a>
+              <span class="when">(2023)</span>
+            </h3>
+            <p class="muted">
+              Oct 16, 2023 — Hill’s opened a 365,000-sq-ft, LEED Gold S.M.A.R.T. Factory in Tonganoxie, KS: AI-powered food-safety vigilance,
+              automation/robotics, and end-to-end digital monitoring to expand wet-food capacity, with on-site water reclamation.
+            </p>
+            <ul>
+              <li><strong>Commissioning:</strong> FAT/sFAT, I/O checkout, PLC/HMI bring-up (AB ControlLogix/GuardLogix; Wonderware/AVEVA).</li>
+              <li><strong>Automation ecosystem:</strong> AGV/AMR integration/support + vision verification for line readiness.</li>
+              <li><strong>Safety & power:</strong> NEC-compliant troubleshooting across 480/120 VAC & 24 VDC.</li>
+              <li><strong>Operational handoff:</strong> Run-in support, backups, documentation.</li>
+            </ul>
+            <p class="muted">
+      Featured — <a href="https://www.gray.com/projects/hills-pet-nutrition/" target="_blank" rel="noopener">Gray Solutions case study</a>
+      &nbsp;•&nbsp; Official announcement — 
+      <a href="https://www.hillspet.com/about-us/press-releases/hills-pet-nutrition-opens-new-smart-factory-in-tonganoxie" target="_blank" rel="noopener">Hill’s opens new S.M.A.R.T. Factory</a>
+    </p>
+          </div>
+
+          <div class="timeline-item">
+            <h3>
+              <a href="#!"
+                onclick="openLightbox('https://cgm-aiml.github.io/assets/img/industrial/berry_global_install_commission_1.jpg','Berry Global Inc. – Machine Installation & Commissioning'); return false;"
+                aria-label="Preview image — Berry Global Inc. – Machine Installation & Commissioning">
+                Berry Global Inc. – Machine Installation &amp; Commissioning
+              </a>
+              <span class="when">(2019–2023)</span>
+            </h3>
+            <div class="where">IML injection-molding lines with integrated robotics; department leadership during expansion with 80+ new jobs.</div>
+            <ul>
+              <li><strong>Install & commission:</strong> Installed, calibrated, rebuilt & maintained IML machinery/automation (Husky, Netstal, Engel, BMB, Muller, Pages, Yudo; robotics: IML Robotix; end-of-line: Wulftec).</li>
+              <li><strong>Systems scope:</strong> Hydraulics, pneumatics, electrical, heating/cooling, vision QA, process automation, conveying/packaging, controls/communications, safety.</li>
+              <li><strong>Leadership & reliability:</strong> Managed budgets; scheduling/training; drove EHS/quality programs (EHS, GDC, Berry U, QSI, JDE, PEM, NRTHA, JSA).</li>
+              <li><strong>Ops cadence:</strong> Weekly project/personnel reviews, documentation/backups, preventive rebuilds, rapid issue resolution.</li>
+            </ul>
+                <p class="muted">
+      Featured — <a href="https://p1group.com/projects/berry-global-berry-plastics" target="_blank" rel="noopener">P1 Group project page</a>
+      &nbsp;•&nbsp; Official announcement — 
+      <a href="https://www.wibw.com/2021/09/14/lawrence-company-bring-61-million-investment-community/" target="_blank" rel="noopener">$61M investment news (WIBW)</a>
+    </p>
+          </div>
+
+          <div class="timeline-item">
+            <h3>
+              <a href="#!"
+                onclick="openLightbox('https://cgm-aiml.github.io/assets/img/industrial/delta_designs_museum_storage_1.jpg','Delta Designs – Museum Collections Storage'); return false;"
+                aria-label="Preview image — Delta Designs – Museum Collections Storage">
+                Delta Designs – Museum Collections Storage
+              </a>
+              <span class="when">(2016–2017)</span>
+            </h3>
+            <div class="where">Clients included KU, the Smithsonian, and the Perot Museum—custom enclosed storage from blueprint to field-ready equipment.</div>
+            <ul>
+              <li><strong>Seal integrity that holds:</strong> Hermetically fabricated cases with machined gasket channels and three-point locks.</li>
+              <li><strong>Water is the enemy:</strong> Tight seams, true door planes, and gasket geometry kept interiors dry during a real facility leak.</li>
+              <li><strong>Access without handling:</strong> Removable alloy flat drawers reduce touch points for textile review.</li>
+              <li><strong>Fabrication methods:</strong> Stick, MIG, TIG, resistance spot; oxy-cutting, grinding, drilling; sanitation, powder coating, curing, assembly, QA/packaging.</li>
+                </ul>
+                <p class="muted">
+      See it in context — Delta Designs 2017
+      <a href="https://www.deltadesignsltd.com/our-products/" target="_blank" rel="noopener">Showcase</a>
+    </p>
+          </div>
+
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- HONORS -->
-  <section id="honors" class="section">
-    <div class="container">
-      <h2>Honors &amp; Recognition</h2>
-      <div class="grid grid-3">
-        <div class="card"><div class="card-body"><strong>Mortar Board National Honor Society</strong><br><span class="muted">2025</span></div></div>
-        <div class="card"><div class="card-body"><strong>Alpha Alpha Alpha (Tri-Alpha) First-Gen</strong><br><span class="muted">2025</span></div></div>
-        <div class="card"><div class="card-body"><strong>Dean’s Honor Roll, Washburn University</strong><br><span class="muted">2023–2024</span></div></div>
-        <div class="card"><div class="card-body"><strong>National Technical Honor Society</strong><br><span class="muted">2018</span></div></div>
-        <div class="card"><div class="card-body"><strong>SkillsUSA – 1st Place, Mechatronics</strong><br><span class="muted">2018</span></div></div>
+
+      <!-- HONORS -->
+    <section id="honors" class="section">
+      <div class="container">
+        <h2>Honors &amp; Recognition</h2>
+        <div class="grid grid-2">
+
+          <div class="card card--honor honor-badge">
+            <div class="card-body">
+              <a href="#!"
+                onclick="openLightbox('https://cgm-aiml.github.io/assets/img/Mortar_Board_Christopher_Gonzalez-Mejias_1.jpg','Mortar Board Honor Society'); return false;"
+                aria-label="Mortar Board Honor Society — preview image">
+                <img src="https://cgm-aiml.github.io/assets/img/Mortar-Board_Vertical-Stacked.png"
+                    alt="Mortar Board Honor Society medallion"
+                    width="240" loading="lazy" decoding="async"
+                    srcset="https://cgm-aiml.github.io/assets/img/Mortar-Board_Vertical-Stacked.png 1x,
+                            https://cgm-aiml.github.io/assets/img/Mortar-Board_Vertical-Stacked.png 2x">
+                <span class="banner">2025</span>
+              </a>
+            </div>
+          </div>
+
+          <div class="card card--honor honor-badge">
+            <div class="card-body">
+              <a href="#!"
+                onclick="openLightbox('https://cgm-aiml.github.io/assets/img/AlphaAlphaAlpha_Christopher_Gonzalez-Mejias_1.jpg','Alpha Alpha Alpha Honor Society'); return false;"
+                aria-label="Alpha Alpha Alpha Honor Society — preview image">
+                aria-label="Alpha Alpha Alpha Honor Society — opens image">
+                <img src="https://cgm-aiml.github.io/assets/img/AAA_HonorSociety_Logo.png"
+                    alt="Alpha Alpha Alpha Honor Society medallion"
+                    width="240" loading="lazy" decoding="async"
+                    srcset="https://cgm-aiml.github.io/assets/img/AAA_HonorSociety_Logo.png 1x,
+                            https://cgm-aiml.github.io/assets/img/AAA_HonorSociety_Logo.png 2x">
+                <span class="banner">2025</span>
+              </a>
+            </div>
+          </div>
+
+          <div class="card card--honor honor-badge">
+            <div class="card-body">
+              <a href="#!"
+                onclick="openLightbox('https://cgm-aiml.github.io/assets/img/Gonzalez-Meijas_Christopher_Deans_Honor_Roll_2023.2024_1.jpg','Deans Honor Roll'); return false;"
+                aria-label="Dean's Honor Roll — preview image">
+                <img src="https://cgm-aiml.github.io/assets/img/Dean's_Honor_Roll.png"
+                    alt="Dean's Honor Roll medallion"
+                    width="240" loading="lazy" decoding="async"
+                    srcset="https://cgm-aiml.github.io/assets/img/Dean's_Honor_Roll.png 1x,
+                            https://cgm-aiml.github.io/assets/img/Dean's_Honor_Roll.png 2x">
+                <span class="banner">2023-2024</span>
+              </a>
+            </div>
+          </div>
+
+          <div class="card card--honor honor-badge">
+            <div class="card-body">
+              <a href="#!"
+                onclick="openLightbox('https://cgm-aiml.github.io/assets/img/National_Technical_Honors_Christopher_Gonzalez-Mejies_1.jpg','National Technical Honors Society'); return false;"
+                aria-label="National Technical Honors Society — preview image">
+                <img src="https://cgm-aiml.github.io/assets/img/National_Teachnical_Honors_Society.png"
+                    alt="National Technical Honors Society medallion"
+                    style="width:200px;height:auto"
+                    width="240" loading="lazy" decoding="async"
+                    srcset="https://cgm-aiml.github.io/assets/img/National_Teachnical_Honors_Society.png 1x,
+                            https://cgm-aiml.github.io/assets/img/National_Teachnical_Honors_Society.png 2x">
+                <span class="banner">2018</span>
+              </a>
+            </div>
+          </div>
+
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
 
   <!-- RESUME -->
-  <section id="resume" class="section">
+    <section id="resume" class="section">
     <div class="container">
       <h2>Resume</h2>
       <div class="card">
         <div class="card-body">
-          <p><strong>Download Resume (PDF):</strong> <a href="/assets/docs/Christopher_Gonzalez-Mejias_Resume.pdf" target="_blank" rel="noopener">Christopher_Gonzalez-Mejias_Resume.pdf</a></p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- CONTACT -->
-  <section id="contact" class="section">
-    <div class="container">
-      <h2>Contact</h2>
-      <div class="grid grid-2">
-        <form class="card" onsubmit="event.preventDefault(); alert('Thanks, I\'ll be in touch!');">
-          <div class="card-body">
-            <div style="display:grid; gap:12px;">
-              <label>
-                <span class="muted">Name</span>
-                <input type="text" placeholder="Your name" required>
-              </label>
-              <label>
-                <span class="muted">Email</span>
-                <input type="email" placeholder="your@email.com" required>
-              </label>
-              <label>
-                <span class="muted">Message</span>
-                <textarea placeholder="Tell me about your project" required></textarea>
-              </label>
-              <button class="btn gold" type="submit">Send</button>
-            </div>
-          </div>
-        </form>
-
-        <div class="card">
-          <div class="card-body">
-            <h3>Elsewhere</h3>
-            <p class="muted">Prefer email or a direct link? Use the buttons below.</p>
-            <div style="display:flex; gap:10px; flex-wrap:wrap;">
-              <a class="btn" href="mailto:automationspecialist72@yahoo.com">Email</a>
-              <a class="btn" href="https://github.com/CGM-AIML" target="_blank" rel="noopener">GitHub</a>
-              <a class="btn" href="https://orcid.org/0009-0006-4627-6960" target="_blank" rel="noopener">ORCID</a>
-            </div>
+          <div class="center" style="gap:12px; flex-wrap:wrap;">
+            <p>For a detailed overview, please download my</p>
+            <a class="btn gold"
+            href="#!"
+            onclick="openLightbox('https://cgm-aiml.github.io/assets/docs/Christopher_Gonzalez-Mejias_Resume.pdf','Resume'); return false;"
+            aria-label="Preview Resume">
+            <strong> Resume </strong>
+            <span class="badge badge--pdf" style="margin-left:.5rem;">PDF</span>
+            </a>
           </div>
         </div>
       </div>
     </div>
   </section>
+
+
+  <!-- Lightbox container -->
+  <div id="lightbox" class="lightbox" hidden aria-hidden="true">
+    <div class="lightbox-dialog" role="dialog" aria-modal="true" aria-label="Headshot">
+      <button class="lightbox-close" aria-label="Close">✕</button>
+      <div id="lbSpinner" aria-hidden="true"></div>  <!-- spinner -->
+      <img id="lightboxImg" alt="Larger headshot view">
+      <!-- PDF viewer (via Google Docs Viewer) -->
+      <iframe id="lightboxPdf" hidden style="width:100%;height:100%;border:0;"></iframe>
+    </div>
+  </div>
+
+      <!-- Mini Concierge -->
+    <div class="mini-bot" aria-live="polite">
+      <div id="miniPanel" class="mini-panel" role="dialog" aria-modal="true" aria-label="Site concierge" hidden>
+        <div class="mini-head">
+          <span>Hi—I'm Astra</span>
+          <button id="miniClose" class="btn" aria-label="Close">✕</button>
+        </div>
+
+        <div class="mini-body">
+          <div class="muted">Where should I take you?</div>
+          <div class="mini-actions">
+            <button class="btn" onclick="location.hash='#aiml'; toggleMini(false)">AI/ML Projects</button>
+            <button class="btn" onclick="location.hash='#industrial'; toggleMini(false)">Industrial Projects</button>
+            <button class="btn" onclick="location.hash='#resume'; toggleMini(false)">Resume</button>
+          </div>
+          <hr style="border-color:var(--border);opacity:.4;">
+          <div class="muted">Or leave a message and Chris will reply by email:</div>
+
+          <div class="mini-foot">
+            <div class="mini-row">
+              <input id="miniName" type="text" placeholder="Your name" autocomplete="name">
+              <input id="miniEmail" type="email" placeholder="Your email" autocomplete="email">
+            </div>
+            <textarea id="miniMsg" placeholder="Question, request, or message…"></textarea>
+            <div class="mini-row">
+              <button class="btn" onclick="prefill('Could we talk about AI/ML project fit?')">AI/ML</button>
+              <button class="btn" onclick="prefill('Could we discuss industrial reliability/automation?')">Industrial</button>
+              <button class="btn" onclick="prefill('Please send your latest resume and availability.')">Resume</button>
+            </div>
+            <button class="btn gold" id="miniSend">Send</button>
+            <div class="mini-note">No spam. Your message goes straight to Chris.</div>
+          </div>
+        </div>
+      </div>
+
+          <button id="miniBtn" class="btn gold" aria-expanded="false" aria-controls="miniPanel">
+          <img src="https://cgm-aiml.github.io/assets/favicon.svg"
+        class="btn-icon"
+        style="border-radius:999px; overflow:hidden; display:inline-block;"
+        width="65" height="65" alt="" decoding="async">
+    </button>
+
+    </div>
 
   <!-- FOOTER -->
   <footer class="footer">
@@ -276,8 +1058,336 @@
     </div>
   </footer>
 
+      <script>
+  // ============================================= JavaScript ===========================================//
+      // Formspree endpoint
+      const FORMSPREE_ENDPOINT = "https://formspree.io/f/xdkwypyn";
+
+      const mini = {
+        btn: document.getElementById('miniBtn'),
+        panel: document.getElementById('miniPanel'),
+        close: document.getElementById('miniClose'),
+        name: document.getElementById('miniName'),
+        email: document.getElementById('miniEmail'),
+        msg: document.getElementById('miniMsg'),
+        send: document.getElementById('miniSend'),
+      };
+
+      function toggleMini(show){
+        if(show === undefined) show = mini.panel.hasAttribute('hidden');
+        if(show){
+          mini.panel.classList.add('show');
+          mini.panel.removeAttribute('hidden');
+          mini.btn.setAttribute('aria-expanded','true');
+          mini.name.focus({preventScroll:true});
+        }else{
+          mini.panel.classList.remove('show');
+          mini.panel.setAttribute('hidden','');
+          mini.btn.setAttribute('aria-expanded','false');
+        }
+      }
+
+      mini.btn?.addEventListener('click', ()=> toggleMini());
+      mini.close?.addEventListener('click', ()=> toggleMini(false));
+
+      function prefill(text){
+        mini.msg.value = text;
+        mini.msg.focus({preventScroll:true});
+      }
+      window.prefill = prefill;
+      window.toggleMini = toggleMini;
+
+      mini.send?.addEventListener('click', async ()=>{
+        const name = (mini.name.value||"").trim();
+        const email = (mini.email.value||"").trim();
+        const message = (mini.msg.value||"").trim();
+
+        if(!message){ alert("Please enter a message."); mini.msg.focus(); return; }
+        if(!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){
+          alert("Please enter a valid email so Chris can reply."); mini.email.focus(); return;
+        }
+
+        const fd = new FormData();
+        fd.append("name", name);
+        fd.append("email", email);
+        fd.append("message", message);
+        fd.append("_subject", "New message from portfolio concierge");
+        fd.append("_gotcha", ""); 
+
+        mini.send.disabled = true; mini.send.textContent = "Sending…";
+        try{
+          const r = await fetch(FORMSPREE_ENDPOINT, {
+            method:"POST",
+            body: fd,
+            headers:{ "Accept":"application/json" }
+          });
+          if(r.ok){
+            mini.msg.value = ""; mini.name.value = ""; mini.email.value = "";
+            mini.send.textContent = "Sent ✓";
+            setTimeout(()=>{ mini.send.textContent = "Send"; toggleMini(false); mini.send.disabled = false; }, 900);
+          }else{
+            mini.send.textContent = "Try again"; mini.send.disabled = false;
+            alert("Couldn’t send just now. Please try again.");
+          }
+        }catch(e){
+          mini.send.textContent = "Try again"; mini.send.disabled = false;
+          alert("Network issue. Please try again.");
+        }
+      });
+
+      setTimeout(()=>{ if(window.scrollY < 50) toggleMini(true); }, 2500);
+    </script>
+
+  <!-------------------------------------------------- HTML --------------------------------------------->
+
+  <!-- PDFs to images -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
   <script>
+    pdfjsLib.GlobalWorkerOptions.workerSrc =
+      "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js";
+  </script>
+
+  <script>
+  // ============================================= JavaScript ===========================================//
     // Set dynamic year
+    document.getElementById('y').textContent = new Date().getFullYear();
+
+    // === Spinner helpers ===
+    function showSpinner(){ document.getElementById("lightbox").classList.add("loading"); }
+    function hideSpinner(){ document.getElementById("lightbox").classList.remove("loading"); }
+
+    // === Hero Particle Field ===
+    (function(){
+      const PRELOAD = [
+        "https://cgm-aiml.github.io/assets/docs/Mortar_Board_Christopher_Gonzalez-Mejias.pdf",
+        "https://cgm-aiml.github.io/assets/docs/AlphaAlphaAlpha_Christopher_Gonzalez-Mejias.pdf",
+        "https://cgm-aiml.github.io/assets/docs/Gonzalez-Mejias_Christopher_Deans_Honor_Roll_2023-2024.pdf",
+        "https://cgm-aiml.github.io/assets/docs/National_Technical_Honors_Christopher_Gonzalez-Mejies.pdf",
+      ];
+
+      // === Improved preload ===
+      PRELOAD.forEach(u => { pdfjsLib.getDocument(u).promise.catch(()=>{}); });
+
+      const reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      const hero = document.querySelector('.hero');
+      const canvas = document.getElementById('heroParticles');
+      if (!hero || !canvas || reduceMotion) return;
+      const ctx = canvas.getContext('2d');
+      let dpr = Math.max(1, Math.min(window.devicePixelRatio || 1, 2));
+      let W = 0, H = 0, particles = [], running = true;
+      let mouseX = 0, mouseY = 0;
+
+      function rand(min, max){ return Math.random() * (max - min) + min; }
+
+      function resize(){
+        const rect = hero.getBoundingClientRect();
+        W = Math.max(1, Math.floor(rect.width));
+        H = Math.max(1, Math.floor(rect.height));
+        canvas.width = Math.floor(W * dpr);
+        canvas.height = Math.floor(H * dpr);
+        canvas.style.width = W + 'px';
+        canvas.style.height = H + 'px';
+        ctx.setTransform(dpr,0,0,dpr,0,0);
+        initParticles();
+      }
+
+      function initParticles(){
+        const area = W * H;
+        const density = area / 180000; 
+        const count = Math.max(100, Math.min(0, Math.round(density)));
+        particles = new Array(count).fill(0).map(()=>{
+          const base = rand(1.2, 3.2);
+          return { x: rand(0, W), y: rand(0, H), vx: rand(-0.25, 0.25), vy: rand(-0.35, 0.35), base, size: base, phase: rand(0, Math.PI*2), jitter: rand(0.013, 0.034) };
+        });
+
+      }
+      function step(){
+        if (!running) return;
+        ctx.clearRect(0,0,W,H);
+        const px = (mouseX / W - 0.5) * 110;
+        const py = (mouseY / H - 0.5) * 110;
+        for (let p of particles){
+          p.x += p.vx; p.y += p.vy; p.phase += p.jitter; p.size = p.base * (0.8 + 0.3*Math.sin(p.phase));
+          if (p.x < -10) p.x = W+10; else if (p.x > W+10) p.x = -10;
+          if (p.y < -10) p.y = H+10; else if (p.y > H+10) p.y = -10;
+        }
+        for (let i=0;i<particles.length;i++){
+          for (let j=i+1;j<particles.length && j<i<30;j++){
+            const a = particles[i], b = particles[j];
+            const dx = a.x - b.x, dy = a.y - b.y;
+            const dist2 = dx*dx + dy*dy;
+            const maxD = 110;
+            if (dist2 < maxD*maxD){
+              const alpha = 0.12 * (1 - Math.sqrt(dist2)/maxD);
+              ctx.beginPath();
+              ctx.strokeStyle = `rgba(201,169,106,${alpha})`;
+              ctx.moveTo(a.x + px*0.5, a.y + py*0.5);
+              ctx.lineTo(b.x + px*0.5, b.y + py*0.5);
+              ctx.stroke();
+            }
+          }
+        }
+        for (const p of particles){
+          ctx.beginPath();
+          ctx.fillStyle = 'rgba(201,169,106,0.75)';
+          ctx.shadowColor = 'rgba(201,169,106,0.35)';
+          ctx.shadowBlur = 6;
+          ctx.arc(p.x + px, p.y + py, p.size, 0, Math.PI*2);
+          ctx.fill();
+        }
+        ctx.shadowBlur = 0;
+        requestAnimationFrame(step);
+      }
+      hero.addEventListener('mousemove', e=>{
+        const rect = hero.getBoundingClientRect();
+        mouseX = e.clientX - rect.left;
+        mouseY = e.clientY - rect.top;
+      });
+
+      const io = new IntersectionObserver((entries)=>{
+        for (const ent of entries){ running = ent.isIntersecting; if (running) requestAnimationFrame(step); }
+      }, { threshold: 0 });
+      io.observe(hero);
+      const ro = new ResizeObserver(resize);
+      ro.observe(hero);
+      window.addEventListener('orientationchange', resize, { passive:true });
+      resize();
+      requestAnimationFrame(step);
+    })();
+
+    // === Lightbox ===
+    (function () {
+      const trigger = document.querySelector('.avatar .avatar-trigger');
+      const lightbox = document.getElementById('lightbox');
+      const img = document.getElementById('lightboxImg');
+      const closeBtn = document.querySelector('.lightbox-close');
+      let lastFocus = null;
+      if (!trigger || !lightbox || !img || !closeBtn) return;
+
+      function openAvatarLightbox(src, alt) {
+        lastFocus = document.activeElement;
+        img.hidden = false;
+        img.src = src; img.alt = alt || '';
+        document.getElementById('lightboxPdf').hidden = true;
+        lightbox.hidden = false;
+        lightbox.setAttribute('aria-hidden', 'false');
+        closeBtn.focus();
+        lightbox.addEventListener('click', onBackdropClick);
+        document.addEventListener('keydown', onEsc);
+      }
+
+      function closeLightbox() {
+        lightbox.hidden = true;
+        lightbox.setAttribute('aria-hidden', 'true');
+        lightbox.removeEventListener('click', onBackdropClick);
+        document.removeEventListener('keydown', onEsc);
+        if (lastFocus) lastFocus.focus();
+      }
+
+      function onBackdropClick(e) { if (e.target === lightbox) closeLightbox(); }
+      
+      function onEsc(e) { if (e.key === 'Escape') closeLightbox(); }
+
+      trigger.addEventListener('click', () => {
+        const thumb = trigger.querySelector('img');
+        openAvatarLightbox(thumb.currentSrc || thumb.src, thumb.alt);
+      });
+      
+      closeBtn.addEventListener('click', closeLightbox);
+    })();
+
+    /* === SINGLE global opener === */
+    window.openLightbox = function (src, alt = "") {
+      const lb   = document.getElementById("lightbox");
+      const img  = document.getElementById("lightboxImg");
+      const pdf  = document.getElementById("lightboxPdf");
+      const isPdf = /\.pdf(\?|$)/i.test(src);
+      if (!lb || !img || !pdf) return;
+
+      if (isPdf) {
+        img.hidden = true;
+        pdf.hidden  = false;
+        showSpinner();
+        const gview = "https://docs.google.com/gview?embedded=1&url=" + encodeURIComponent(src);
+        const onLoad = () => { pdf.removeEventListener("load", onLoad); hideSpinner(); };
+        pdf.addEventListener("load", onLoad);
+        setTimeout(hideSpinner, 2000);
+        pdf.src = gview;
+      } else {
+        pdf.hidden = true;
+        img.hidden = false;
+        img.src = src;
+        img.alt = alt || "";
+      }
+
+      lb.hidden = false;
+      lb.setAttribute("aria-hidden", "false");
+      const closeBtn = document.querySelector(".lightbox-close");
+      if (closeBtn) closeBtn.focus();
+    };
+
+    async function openPdfAsImage(pdfUrl, alt = "", scale = 1.5) {
+      const lb  = document.getElementById("lightbox");
+      const img = document.getElementById("lightboxImg");
+      const pdfFrame = document.getElementById("lightboxPdf");
+      if (!lb || !img) return;
+
+      try {
+        if (pdfFrame) { pdfFrame.hidden = true; pdfFrame.src = ""; }
+        img.hidden = true; img.src = ""; img.alt = "";
+        showSpinner();
+
+        const pdf = await pdfjsLib.getDocument(pdfUrl).promise;
+        const page = await pdf.getPage(1);
+
+        const maxW = Math.min(window.innerWidth * 0.92, 980);
+        const v0 = page.getViewport({ scale });
+        const s = Math.min(maxW / v0.width, 1.0) * scale;
+        const vp = page.getViewport({ scale: s });
+
+        const canvas = document.createElement("canvas");
+        canvas.width = vp.width; canvas.height = vp.height;
+        const ctx = canvas.getContext("2d");
+        await page.render({ canvasContext: ctx, viewport: vp }).promise;
+
+        img.src = canvas.toDataURL("image/png");
+        img.alt = alt || "";
+        img.hidden = false;
+
+        lb.hidden = false;
+        lb.setAttribute("aria-hidden", "false");
+        const closeBtn = document.querySelector(".lightbox-close");
+        if (closeBtn) closeBtn.focus();
+      } catch (e) {
+        openLightbox(pdfUrl, alt);  
+      } finally {
+        hideSpinner();
+      }
+    }
+
+    // === Ensure backdrop click & ESC always close === 
+    (function ensureLightboxHandlers(){
+      const lb  = document.getElementById("lightbox");
+      const closeBtn = document.querySelector(".lightbox-close");
+      if (!lb || !closeBtn) return;
+
+      function close() {
+        lb.hidden = true;
+        lb.setAttribute("aria-hidden", "true");
+      }
+      function onBackdropClick(e){ if (e.target === lb) close(); }
+      function onEsc(e){ if (e.key === "Escape") close(); }
+
+      if (!lb.dataset.bound) {
+        lb.addEventListener("click", onBackdropClick);
+        document.addEventListener("keydown", onEsc);
+        closeBtn.addEventListener("click", close);
+        lb.dataset.bound = "1";
+      }
+      window.closeLightbox = close;
+    })();
+
+    // === Dynamic year ===
     document.getElementById('y').textContent = new Date().getFullYear();
   </script>
 </body>
